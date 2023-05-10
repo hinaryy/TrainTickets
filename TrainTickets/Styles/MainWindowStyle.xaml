@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="TrainTickets.Styles.Window">
+
+    <Color x:Key="Background">#fff</Color>
+    <SolidColorBrush x:Key="WindowBackground" Color="{StaticResource Background}"></SolidColorBrush>
+
+    <ControlTemplate x:Key="WindowTemplate" TargetType="{x:Type Window}">
+        <Border Background="{StaticResource WindowBackground}" CornerRadius="10">
+            
+            <Grid Width="Auto" Height="Auto">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Border Background="Transparent" CornerRadius="5,5,0,0" MouseDown="Window_MouseDown"/>
+
+                <StackPanel 
+                    x:Name="ControlPanel" 
+                    Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    Height="Auto" 
+                    Width="150" 
+                    HorizontalAlignment="Right">
+                    
+                    <Button 
+                        x:Name="MinimizeButton" 
+                        Width="50" 
+                        Content="—"
+                        FontSize="9"
+                        Style="{StaticResource ControlPanelButtonBase}" 
+                        Click="MinimizeButton_OnClick"/>
+
+                    <Button 
+                        x:Name="MaximizeButton" 
+                        Width="50" 
+                        FontFamily="Segoe MDL2 Assets" 
+                        Content="&#xE739;"
+                        FontSize="9"
+                        Style="{StaticResource ControlPanelButtonBase}" 
+                        Click="MaximizeRestoreButton_OnClick"/>
+
+                    <Button 
+                        x:Name="CloseButton" 
+                        Width="50" 
+                        FontFamily="Segoe MDL2 Assets" 
+                        Content="&#xE711;"
+                        Style="{StaticResource ControlPanelCloseButton}" 
+                        Click="CloseButton_OnClick"/>
+                    
+                </StackPanel>
+
+                <AdornerDecorator Grid.Row="1">
+                    <ContentPresenter/>
+                </AdornerDecorator>
+
+            </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="WindowState" Value="Maximized">
+                <Setter TargetName="ControlPanel" Property="Margin" Value="0,6,6,0"></Setter>
+            </Trigger>
+            
+            <Trigger Property="WindowState" Value="Normal">
+                <Setter TargetName="ControlPanel" Property="Margin" Value="0,0,0,0"></Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="Template" Value="{StaticResource WindowTemplate}"></Setter>
+    </Style>
+
+</ResourceDictionary>
