@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\App.xaml
-7-1764198480
+8456803536
 
-5506838569
+5857971580
 1981827736222
-MainWindow.xaml;SignInPage.xaml;Styles\Colors.xaml;Styles\ContronPanelButtonStyle.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\MainWindowStyle.xaml;
+Styles\Colors.xaml;Styles\ContronPanelButtonStyle.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\MainWindowStyle.xaml;Styles\TextBoxStyle.xaml;View\MainWindow.xaml;View\Pages\SignInPage.xaml;
 
 False
 

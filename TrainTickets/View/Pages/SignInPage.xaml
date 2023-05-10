@@ -1,0 +1,73 @@
+﻿<Page x:Class="TrainTickets.View.Pages.SignInPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainTickets.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1080"
+      Title="SignInPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="360"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="360"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="1" Grid.Row="1" BorderThickness="2" BorderBrush="Black" CornerRadius="3">
+            <StackPanel>
+                <TextBlock 
+                FontWeight="Bold" 
+                FontSize="25" 
+                HorizontalAlignment="Center" 
+                Margin="0,30,0,30"
+                FontFamily="{StaticResource Poppins Bold}">
+                
+                Регистрация
+                </TextBlock>
+
+                <TextBox 
+                    Text="Логин"
+                    HorizontalAlignment="Center" 
+                    Height="50" 
+                    Width="300" 
+                    BorderBrush="Black" 
+                    BorderThickness="2"
+                    Style="{StaticResource CustomTextBox}">
+
+                </TextBox>
+
+                <TextBox 
+                    HorizontalAlignment="Center" 
+                    Text="Пароль"
+                    Height="50" 
+                    Width="300" 
+                    BorderBrush="Black" 
+                    BorderThickness="2"
+                    Margin="0, 30, 0, 30"
+                    Style="{StaticResource CustomTextBox}">
+
+                </TextBox>
+
+                <Button 
+                    HorizontalAlignment="Center"
+                    Height="50"
+                    Width="150"
+                    Content="Регистрация"
+                    Background="#fff"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    FontWeight="DemiBold"
+                    FontSize="15"
+                    />
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

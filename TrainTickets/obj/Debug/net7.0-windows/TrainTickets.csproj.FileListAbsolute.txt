@@ -4,13 +4,9 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\TrainTic
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\TrainTickets.dll
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\TrainTickets.pdb
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets.csproj.AssemblyReference.cache
-D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\MainWindow.g.cs
-D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\SignInPage.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\App.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets_MarkupCompile.cache
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets_MarkupCompile.lref
-D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\MainWindow.baml
-D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\SignInPage.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets.g.resources
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets.GeneratedMSBuildEditorConfig.editorconfig
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets.AssemblyInfoInputs.cache
@@ -28,3 +24,8 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\C
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\Icons.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\MainWindowStyle.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\Fonts.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\MainWindow.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\SignInPage.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\MainWindow.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\SignInPage.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\TextBoxStyle.baml
