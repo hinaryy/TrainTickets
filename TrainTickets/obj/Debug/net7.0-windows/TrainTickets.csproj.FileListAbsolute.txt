@@ -29,3 +29,4 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pag
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\MainWindow.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\SignInPage.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\TextBoxStyle.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs

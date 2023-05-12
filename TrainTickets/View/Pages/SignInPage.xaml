@@ -4,9 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TrainTickets.View.Pages"
+      xmlns:ViewModel="clr-namespace:TrainTickets.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1080"
       Title="SignInPage">
+
+    <Page.DataContext>
+        <ViewModel:SignInViewModel Login="Gay" Password="G"/>
+    </Page.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +38,7 @@
                 </TextBlock>
 
                 <TextBox 
-                    Text="Логин"
+                     Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Center" 
                     Height="50" 
                     Width="300" 
@@ -44,8 +49,9 @@
                 </TextBox>
 
                 <TextBox 
+                    
                     HorizontalAlignment="Center" 
-                    Text="Пароль"
+                    Text="{Binding Password,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Height="50" 
                     Width="300" 
                     BorderBrush="Black" 
@@ -65,6 +71,7 @@
                     BorderThickness="2"
                     FontWeight="DemiBold"
                     FontSize="15"
+                    Command="{Binding SignInCommand}"
                     />
 
             </StackPanel>
