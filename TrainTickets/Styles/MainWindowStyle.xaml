@@ -16,7 +16,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Border Background="Transparent" CornerRadius="5,5,0,0" MouseDown="Window_MouseDown"/>
+                <Border Background="#323232" CornerRadius="5,5,0,0" MouseDown="Window_MouseDown"/>
 
                 <StackPanel 
                     x:Name="ControlPanel" 
@@ -31,6 +31,7 @@
                         Width="50" 
                         Content="—"
                         FontSize="9"
+                        Foreground="White"
                         Style="{StaticResource ControlPanelButtonBase}" 
                         Click="MinimizeButton_OnClick"/>
 
@@ -39,6 +40,7 @@
                         Width="50" 
                         FontFamily="Segoe MDL2 Assets" 
                         Content="&#xE739;"
+                        Foreground="White"
                         FontSize="9"
                         Style="{StaticResource ControlPanelButtonBase}" 
                         Click="MaximizeRestoreButton_OnClick"/>
@@ -47,6 +49,7 @@
                         x:Name="CloseButton" 
                         Width="50" 
                         FontFamily="Segoe MDL2 Assets" 
+                        Foreground="White"
                         Content="&#xE711;"
                         Style="{StaticResource ControlPanelCloseButton}" 
                         Click="CloseButton_OnClick"/>

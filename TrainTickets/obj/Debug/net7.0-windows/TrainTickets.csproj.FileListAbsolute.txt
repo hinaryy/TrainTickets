@@ -30,3 +30,8 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Mai
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\SignInPage.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\TextBoxStyle.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets.csproj.CopyComplete
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\SignUpPage.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\SignUpPage.baml

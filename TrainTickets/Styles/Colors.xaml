@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <Color x:Key="DefaultContronPanelButtonColor">#FFF</Color> <!-- Стандартный цвет кнопки панели управления -->
+    <Color x:Key="DefaultContronPanelButtonColor">#323232</Color> <!-- Стандартный цвет кнопки панели управления -->
     <SolidColorBrush x:Key="DefaultContronPanelButtonColorBrush" Color="{StaticResource DefaultContronPanelButtonColor}" />
     
     <Color x:Key="HoverControlPanelButtonColor">#E5E5E5</Color> <!-- Цвет кнопки панели управления при наведении -->

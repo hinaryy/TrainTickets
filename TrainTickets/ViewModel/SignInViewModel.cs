@@ -6,13 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using TrainTickets.Interfaces;
 
 namespace TrainTickets.ViewModel
 {
     public class SignInViewModel : ViewModelBase
     {
+        private INavigationService _navigationService;
         private string _login;
         private string _password;
+
+        public INavigationService NavigationService
+        {
+            get => _navigationService;
+
+            set
+            {
+                _navigationService = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string Login 
         { 
@@ -35,20 +48,23 @@ namespace TrainTickets.ViewModel
 
         public ICommand SignInCommand { get; }
 
-        public SignInViewModel() 
+        public ICommand NavigationToSignUpCommand { get; }
+
+        public SignInViewModel(INavigationService navigationService) 
         {
-            SignInCommand = new ViewModelCommand(executeAction, canExecuteAction);
+            _navigationService = navigationService;
+            NavigationToSignUpCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignUpViewModel>());
+            SignInCommand = new ViewModelCommand(ExecuteSignInCommand, CanExecuteSignInCommand);
         }
 
-        public bool canExecuteAction(object obj)
+        private bool CanExecuteSignInCommand(object obj)
         {
             return true;
         }
 
-        public void executeAction(object obj)
+        private void ExecuteSignInCommand(object obj)
         {
-            MessageBox.Show("Пароль: " + Password);
+            throw new NotImplementedException();
         }
-
     }
 }

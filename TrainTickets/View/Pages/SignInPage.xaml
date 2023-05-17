@@ -3,15 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TrainTickets.View.Pages"
-      xmlns:ViewModel="clr-namespace:TrainTickets.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1080"
       Title="SignInPage">
-
-    <Page.DataContext>
-        <ViewModel:SignInViewModel Login="Gay" Password="G"/>
-    </Page.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,10 +26,7 @@
                 FontSize="25" 
                 HorizontalAlignment="Center" 
                 Margin="0,30,0,30"
-                FontFamily="{StaticResource Poppins Bold}">
-                
-                Регистрация
-                </TextBlock>
+                FontFamily="{StaticResource Poppins Bold}" Text="Авторизация"/>
 
                 <TextBox 
                      Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
@@ -51,7 +42,7 @@
                 <TextBox 
                     
                     HorizontalAlignment="Center" 
-                    Text="{Binding Password,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
                     Height="50" 
                     Width="300" 
                     BorderBrush="Black" 
@@ -65,14 +56,28 @@
                     HorizontalAlignment="Center"
                     Height="50"
                     Width="150"
-                    Content="Регистрация"
+                    Content="Войти"
                     Background="#fff"
                     BorderBrush="Black"
                     BorderThickness="2"
                     FontWeight="DemiBold"
-                    FontSize="15"
+                    FontSize="13"
                     Command="{Binding SignInCommand}"
                     />
+
+                <TextBlock
+                    FontWeight="Medium"
+                    FontSize="13"
+                    HorizontalAlignment="Center"
+                    Margin="0, 10, 0, 0">
+                    
+                    <Hyperlink Foreground="Black"
+                               FontWeight="SemiBold"
+                               TextDecorations="None"
+                               Command="{Binding NavigationToSignUpCommand}">
+                        Зарегистрироваться
+                    </Hyperlink>
+                </TextBlock>
 
             </StackPanel>
         </Border>

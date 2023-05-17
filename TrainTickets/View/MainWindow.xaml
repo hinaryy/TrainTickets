@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:TrainTickets.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1080"
-        Style="{StaticResource {x:Type Window}}" WindowStyle="None" AllowsTransparency="True">
+        Style="{StaticResource {x:Type Window}}" 
+        WindowStyle="None" AllowsTransparency="True" Icon="/View/train.jpg"
+        >
 
     <Grid>
-        <Frame Source="Pages/SignInPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame Content="{Binding NavigationService.CurrentView}" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 </Window>
