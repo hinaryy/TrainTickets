@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +18,8 @@ namespace TrainTickets
 {
     public partial class App
     {
+
+        private readonly IApplicationDbContext _applicationDbContext;
         private IServiceProvider _serviceProvider;
         public App()
         {
@@ -26,11 +30,18 @@ namespace TrainTickets
                 DataContext = provider.GetRequiredService<MainViewModel>()
             });
 
-
+           
             services.AddSingleton<SignUpViewModel>();
             services.AddSingleton<SignInViewModel>();
+            services.AddSingleton<HomeViewModel>();
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<INavigationService, NavigationService>();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer("Data Source=HINARY\\SQLEXPRESS;Initial Catalog=TrainTickets;Integrated Security=True; Encrypt=false",
+                builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
             services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider => viewModelType =>
             (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));

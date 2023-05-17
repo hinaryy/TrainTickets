@@ -32,13 +32,13 @@
                 FontFamily="{StaticResource Poppins Bold}" Text="Регистрация"/>
 
                 <TextBox 
-                     Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Center" 
                     Height="50" 
                     Width="300" 
                     BorderBrush="Black" 
                     BorderThickness="2"
-                    Style="{StaticResource CustomTextBox}">
+                    x:Name="RegistrationNameTextBox">
 
                 </TextBox>
 
@@ -51,20 +51,20 @@
                     BorderBrush="Black" 
                     BorderThickness="2"
                     Margin="0, 30, 0, 0"
-                    Style="{StaticResource CustomTextBox}">
+                    x:Name="RegistrationEmailTextBox">
 
                 </TextBox>
 
                 <TextBox 
                     
                     HorizontalAlignment="Center" 
-                    Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Height="50" 
                     Width="300" 
                     BorderBrush="Black" 
                     BorderThickness="2"
                     Margin="0, 30, 0, 30"
-                    Style="{StaticResource CustomTextBox}">
+                    x:Name="RegistrationPasswordTextBox">
 
                 </TextBox>
 

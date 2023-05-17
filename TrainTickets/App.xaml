@@ -11,7 +11,6 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/TextBoxStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Styles/Fonts.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Styles/Colors.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Styles/ContronPanelButtonStyle.xaml"></ResourceDictionary>
@@ -21,6 +20,10 @@
 
             <DataTemplate DataType="{x:Type TypeName=viewModel:SignInViewModel}">
                 <view:SignInPage/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type TypeName=viewModel:HomeViewModel}">
+                <view:HomePage/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type TypeName=viewModel:SignUpViewModel}">

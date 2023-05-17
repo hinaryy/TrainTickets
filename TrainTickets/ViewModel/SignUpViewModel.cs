@@ -5,15 +5,19 @@ using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TrainTickets.Interfaces;
+using TrainTickets.Model;
+using TrainTickets.Persistence;
 
 namespace TrainTickets.ViewModel
 {
     public class SignUpViewModel : ViewModelBase
     {
+        private ApplicationDbContext _context;
         private INavigationService _navigationService;
-        private string _login;
+        private string _name;
         private string _password;
         private string _email;
         public ICommand SignUpCommand { get; }
@@ -31,13 +35,13 @@ namespace TrainTickets.ViewModel
             }
         }
 
-        public string Login
+        public string Name
         {
-            get => _login;
+            get => _name;
             set
             {
-                _login = value;
-                OnPropertyChanged(nameof(Login));
+                _name = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
         public string Password
@@ -59,8 +63,9 @@ namespace TrainTickets.ViewModel
             }
         }
 
-        public SignUpViewModel(INavigationService navigationService)
+        public SignUpViewModel(INavigationService navigationService, ApplicationDbContext context)
         {
+            _context = context;
             _navigationService = navigationService;
             NavigationToSignInCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
             SignUpCommand = new ViewModelCommand(ExecuteSignUpCommand, CanExecuteSignUpCommand);
@@ -69,12 +74,31 @@ namespace TrainTickets.ViewModel
 
         private bool CanExecuteSignUpCommand(object obj)
         {
-            return true;
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password) ||
+            Password.Length <= 8 || !Email.Contains("@") || !Email.Contains(".") || Email.Length == 1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void ExecuteSignUpCommand(object obj)
         {
-            throw new NotImplementedException();
+            var user = new User
+            {
+                Name = Name,
+                Email = Email,
+                Password = Password,
+            };
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            NavigationService.NavigateTo<SignInViewModel>();
+
         }
     }
 }

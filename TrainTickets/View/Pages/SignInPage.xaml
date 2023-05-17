@@ -29,26 +29,26 @@
                 FontFamily="{StaticResource Poppins Bold}" Text="Авторизация"/>
 
                 <TextBox 
-                     Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Center" 
                     Height="50" 
                     Width="300" 
                     BorderBrush="Black" 
                     BorderThickness="2"
-                    Style="{StaticResource CustomTextBox}">
+                    >
 
                 </TextBox>
 
                 <TextBox 
                     
                     HorizontalAlignment="Center" 
-                    Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Height="50" 
                     Width="300" 
                     BorderBrush="Black" 
                     BorderThickness="2"
                     Margin="0, 30, 0, 30"
-                    Style="{StaticResource CustomTextBox}">
+                    >
 
                 </TextBox>
 

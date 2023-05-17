@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrainTickets.Interfaces;
+using TrainTickets.Persistence;
 
 namespace TrainTickets.ViewModel
 {
@@ -24,7 +25,6 @@ namespace TrainTickets.ViewModel
         public MainViewModel(INavigationService navigationService)
         {
             NavigationService = navigationService;
-
             NavigationService.NavigateTo<SignInViewModel>();
         }
     }

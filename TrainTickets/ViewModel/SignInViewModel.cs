@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using TrainTickets.Interfaces;
+using TrainTickets.Persistence;
+using TrainTickets.Model;
 
 namespace TrainTickets.ViewModel
 {
     public class SignInViewModel : ViewModelBase
     {
+        private ApplicationDbContext _context;
         private INavigationService _navigationService;
-        private string _login;
+        private string _name;
         private string _password;
 
         public INavigationService NavigationService
@@ -27,13 +30,13 @@ namespace TrainTickets.ViewModel
             }
         }
 
-        public string Login 
+        public string Name 
         { 
-            get => _login;
+            get => _name;
             set
             {
-                _login = value;
-                OnPropertyChanged(nameof(Login));  
+                _name = value;
+                OnPropertyChanged(nameof(Name));  
             }
         }
         public string Password 
@@ -50,8 +53,9 @@ namespace TrainTickets.ViewModel
 
         public ICommand NavigationToSignUpCommand { get; }
 
-        public SignInViewModel(INavigationService navigationService) 
+        public SignInViewModel(INavigationService navigationService, ApplicationDbContext context) 
         {
+            _context = context;
             _navigationService = navigationService;
             NavigationToSignUpCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignUpViewModel>());
             SignInCommand = new ViewModelCommand(ExecuteSignInCommand, CanExecuteSignInCommand);
@@ -64,7 +68,17 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteSignInCommand(object obj)
         {
-            throw new NotImplementedException();
+
+            var user = _context.Users.FirstOrDefault(i => i.Name == Name && i.Password == Password);
+
+            if (user == null) 
+            { 
+                MessageBox.Show("Логин или пароль неверный"); 
+            }
+            else
+            {
+                NavigationService.NavigateTo<HomeViewModel>();
+            }
         }
     }
 }
