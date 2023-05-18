@@ -9,6 +9,7 @@ using System.Windows;
 using TrainTickets.Interfaces;
 using TrainTickets.Persistence;
 using TrainTickets.Model;
+using System.Threading;
 
 namespace TrainTickets.ViewModel
 {
@@ -18,6 +19,7 @@ namespace TrainTickets.ViewModel
         private INavigationService _navigationService;
         private string _name;
         private string _password;
+        private string _errorMessage;
 
         public INavigationService NavigationService
         {
@@ -48,6 +50,15 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged(nameof(Password));   
             } 
         }
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
 
         public ICommand SignInCommand { get; }
 
@@ -71,13 +82,13 @@ namespace TrainTickets.ViewModel
 
             var user = _context.Users.FirstOrDefault(i => i.Name == Name && i.Password == Password);
 
-            if (user == null) 
-            { 
-                MessageBox.Show("Логин или пароль неверный"); 
+            if (user != null) 
+            {
+                NavigationService.NavigateTo<HomeViewModel>();
             }
             else
             {
-                NavigationService.NavigateTo<HomeViewModel>();
+                ErrorMessage = "Пароль или логин некорректный";
             }
         }
     }

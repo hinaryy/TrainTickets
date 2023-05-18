@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Markup;
 using TrainTickets.Interfaces;
 using TrainTickets.Model;
 using TrainTickets.Persistence;
@@ -20,6 +21,7 @@ namespace TrainTickets.ViewModel
         private string _name;
         private string _password;
         private string _email;
+        private string _errorMessage;
         public ICommand SignUpCommand { get; }
         public ICommand NavigationToSignInCommand { get; }
 
@@ -31,7 +33,7 @@ namespace TrainTickets.ViewModel
             set
             {
                 _navigationService = value;
-                OnPropertyChanged();  
+                OnPropertyChanged();
             }
         }
 
@@ -62,6 +64,15 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged(nameof(Email));
             }
         }
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
 
         public SignUpViewModel(INavigationService navigationService, ApplicationDbContext context)
         {
@@ -75,14 +86,12 @@ namespace TrainTickets.ViewModel
         private bool CanExecuteSignUpCommand(object obj)
         {
             if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password) ||
-            Password.Length <= 8 || !Email.Contains("@") || !Email.Contains(".") || Email.Length == 1)
+            Password.Length < 8 || !Email.Contains("@") || !Email.Contains(".") || Email.Length == 1)
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+
+            return true;
         }
 
         private void ExecuteSignUpCommand(object obj)

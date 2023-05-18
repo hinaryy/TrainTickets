@@ -8,10 +8,11 @@
         Title="MainWindow" Height="600" Width="1080"
         Style="{StaticResource {x:Type Window}}" 
         WindowStyle="None" AllowsTransparency="True" Icon="/View/train.jpg"
+        WindowStartupLocation="CenterScreen"
         >
 
     <Grid>
-        <Frame Content="{Binding NavigationService.CurrentView}" NavigationUIVisibility="Hidden"/>
+        <Frame Content="{Binding NavigationService.CurrentView}" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
     </Grid>
 
 </Window>

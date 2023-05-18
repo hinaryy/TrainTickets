@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TrainTickets.View.Pages"
       xmlns:ViewModel="clr-namespace:TrainTickets.ViewModel"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1080"
+      d:DesignHeight="600" d:DesignWidth="880"
       Title="SignInPage">
 
 

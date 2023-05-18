@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1080"
+      d:DesignHeight="600" d:DesignWidth="880"
       Title="SignInPage">
 
     <Grid>
@@ -47,10 +47,31 @@
                     Width="300" 
                     BorderBrush="Black" 
                     BorderThickness="2"
-                    Margin="0, 30, 0, 30"
+                    Margin="0, 30, 0, 0"
                     >
 
                 </TextBox>
+
+                <TextBlock
+                    Text="{Binding ErrorMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="30, 5, 30, 5"
+                    Foreground="Red"
+                    >
+
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=ErrorMessage, Path=Text}" Value="">
+                                    <Setter Property="Height" Value="0"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=ErrorMessage, Path=Text}" Value="Пароль или логин некорректный">
+                                    <Setter Property="Height" Value="20"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+
+                </TextBlock>
 
                 <Button 
                     HorizontalAlignment="Center"
