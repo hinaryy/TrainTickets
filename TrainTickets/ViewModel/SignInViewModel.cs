@@ -82,7 +82,11 @@ namespace TrainTickets.ViewModel
 
             var user = _context.Users.FirstOrDefault(i => i.Name == Name && i.Password == Password);
 
-            if (user != null) 
+            if(user.Name.EndsWith("admin"))
+            {
+                NavigationService.NavigateTo<AdminHomeViewModel>();
+            }
+            else if (user != null) 
             {
                 NavigationService.NavigateTo<HomeViewModel>();
             }

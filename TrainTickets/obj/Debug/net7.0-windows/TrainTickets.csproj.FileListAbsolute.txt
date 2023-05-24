@@ -70,3 +70,7 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\runtimes
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\HomePage.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\HomePage.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\TicketPurchasePage.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\TicketPurchasePage.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\AdminHomePage.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\AdminHomePage.baml
