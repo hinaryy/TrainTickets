@@ -52,7 +52,7 @@ namespace TrainTickets.Styles {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TrainTickets;component/styles/mainwindowstyle.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TrainTickets;V1.0.0.0;component/styles/mainwindowstyle.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Styles\MainWindowStyle.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -29,7 +29,7 @@
                 FontFamily="{StaticResource Poppins Bold}" Text="Авторизация"/>
 
                 <TextBox 
-                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Center" 
                     Height="50" 
                     Width="300" 

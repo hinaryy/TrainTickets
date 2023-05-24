@@ -10,7 +10,7 @@
       Title="SignInPage">
 
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="440"/>

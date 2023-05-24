@@ -36,7 +36,6 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public string Name
         {
             get => _name;

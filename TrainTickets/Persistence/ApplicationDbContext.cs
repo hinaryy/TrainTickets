@@ -25,6 +25,8 @@ namespace TrainTickets.Persistence
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Route> Routes { get; set; }
+        public DbSet<Station> Stations { get; set; }
 
         async Task<int>  IApplicationDbContext.SaveChangesAsync(CancellationToken cancellationToken)
         {

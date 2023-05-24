@@ -1,0 +1,75 @@
+﻿<Page x:Class="TrainTickets.View.Pages.RouteAddingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainTickets.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RouteAddingPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            FontWeight="Medium"
+            FontSize="13"
+            Margin="0, 10, 0, 0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Grid.Column="0">
+                    
+            <Hyperlink Foreground="Black"
+                        FontWeight="SemiBold"
+                        TextDecorations="None"
+                        Command="{Binding NavigateToAdminHomePageCommand}">
+                Назад
+            </Hyperlink>
+        </TextBlock>
+
+        <StackPanel Grid.Column="1" Width="300" VerticalAlignment="Center">
+            <!--откуда-->
+            <Label Content="Откуда"/>
+            <ComboBox 
+                ItemsSource="{Binding Stations}"
+                Text="{Binding FromStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"
+                />
+
+            <!--куда-->
+            <Label Content="Куда"/>
+            <ComboBox 
+                ItemsSource="{Binding Stations}"
+                Text="{Binding ToStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"/>
+
+            <!--дата-->
+            <Label Content="Дата"/>
+            <DatePicker 
+                Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                SelectedDate="01/01/2023"
+                Height="30"
+                Background="White"/>
+            
+            <!--цена-->
+            <Label Content="Цена"/>
+            <TextBox 
+                Height="30" 
+                Width="300"
+                Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"
+                />
+
+            <Button 
+                Content="Добавить" 
+                Margin="0, 26, 0, 0"
+                Height="30"
+                Background="White"
+                Command="{Binding AddRouteCommand}"
+                />
+            
+        </StackPanel>
+    </Grid>
+</Page>

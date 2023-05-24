@@ -11,7 +11,9 @@ namespace TrainTickets.ViewModel
 {
     class AdminHomeViewModel : ViewModelBase
     {
-        public ICommand NavigationToAddRoutePageCommand { get; }
+        public ICommand NavigationToRouteAddingPageCommand { get; }
+        public ICommand NavigationToStationAddingPageCommand { get; }
+        public ICommand NavigationToSignInPageCommand { get; }
 
         private ApplicationDbContext _context;
         private INavigationService _navigationService;
@@ -20,7 +22,9 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToAddRoutePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<TicketPurchaseViewModel>());
+            NavigationToRouteAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteAddingViewModel>());
+            NavigationToStationAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationAddingViewModel>());
+            NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
         }
 
         public INavigationService NavigationService
