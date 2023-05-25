@@ -25,7 +25,7 @@ namespace TrainTickets.ViewModel
         public MainViewModel(INavigationService navigationService)
         {
             NavigationService = navigationService;
-            NavigationService.NavigateTo<AdminHomeViewModel>();
+            NavigationService.NavigateTo<HomeViewModel>();
         }
     }
 }

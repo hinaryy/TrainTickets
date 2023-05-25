@@ -78,3 +78,4 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pag
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\RouteAddingPage.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\StationAddingPage.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\StationAddingPage.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\RouteCard.baml

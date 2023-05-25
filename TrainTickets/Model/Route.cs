@@ -15,6 +15,6 @@ namespace TrainTickets.Model
         public int FromStation { set; get; }
         public int ToStation { set; get; }
         public DateTime Date { set; get; }
-        public float Price { set; get; }
+        public double Price { set; get; }
     }
 }

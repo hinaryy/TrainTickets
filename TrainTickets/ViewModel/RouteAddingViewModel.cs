@@ -10,6 +10,9 @@ using System.Windows.Input;
 using TrainTickets.Model;
 using System.Windows;
 using System.Collections.ObjectModel;
+using System.Net.WebSockets;
+using System.Runtime.CompilerServices;
+using TrainTickets.Services;
 
 namespace TrainTickets.ViewModel
 {
@@ -22,8 +25,17 @@ namespace TrainTickets.ViewModel
         private string _toStation;
         private DateTime _date = new DateTime(2023, 1, 1);
         private int _price;
+        private List<string> _stations;
 
-        public List<string> Stations { set; get; }
+        public List<string> Stations 
+        { 
+            get => _stations;
+            set
+            {
+                _stations = value;
+                OnPropertyChanged(nameof(Stations));
+            } 
+        }
         public INavigationService NavigationService
         {
             get => _navigationService;
@@ -82,6 +94,7 @@ namespace TrainTickets.ViewModel
 
 
             Stations = _context.Stations.Select(i => i.Name).ToList();
+            Stations.Sort();
         }
 
         private bool CanExecuteAddRouteCommand(object obj)

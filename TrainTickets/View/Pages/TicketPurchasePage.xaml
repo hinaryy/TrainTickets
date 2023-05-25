@@ -30,5 +30,36 @@
             </Hyperlink>
         </TextBlock>
 
+        <StackPanel Grid.Column="1" Width="600" Margin="0, 50, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <!--откуда-->
+            <Label Content="Откуда"/>
+            <ComboBox 
+                ItemsSource="{Binding Stations}"
+                Text="{Binding FromStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"
+                />
+
+            <!--куда-->
+            <Label Content="Куда"/>
+            <ComboBox 
+                ItemsSource="{Binding Stations}"
+                Text="{Binding ToStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"/>
+
+            <Button
+                Height="30"
+                Background="White"
+                Margin="0, 26, 0, 0"
+                Content="Поиск"
+                Command="{Binding SearchTicketsCommand}"/>
+
+            <ListView 
+                Height="150px"
+                Margin="0, 26, 0, 0"
+                ItemsSource="{Binding Routes}"
+                SelectedItem="{Binding SelectedRoute}"
+                ItemContainerStyle="{StaticResource RouteCard}"
+                />
+        </StackPanel>
     </Grid>
 </Page>

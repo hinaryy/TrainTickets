@@ -67,6 +67,7 @@ namespace TrainTickets.ViewModel
             MessageBox.Show("Станция успешно добавлена");
 
             Name = "";
+
         }
 
 
