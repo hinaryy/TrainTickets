@@ -92,10 +92,10 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteSearchTicketsCommand(object obj)
         {
-            int fromStationId = _context.Stations.FirstOrDefault(i => i.Name == FromStation).Id;
-            int toStationId = _context.Stations.FirstOrDefault(i => i.Name == ToStation).Id;
+            //int fromStationId = _context.Stations.FirstOrDefault(i => i.Name == FromStation).Id;
+            //int toStationId = _context.Stations.FirstOrDefault(i => i.Name == ToStation).Id;
 
-            Routes = _context.Routes.Where(i => i.FromStation == fromStationId && i.ToStation == toStationId).ToList();
+            Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
         }
     }
 }

@@ -6,7 +6,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#292b2f"></Setter>
+                <Setter Property="Background" Value="LightGray"></Setter>
             </Trigger>
         </Style.Triggers>
 
@@ -14,18 +14,92 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
                     <Border Background="{TemplateBinding Background}"
-                            Height="65">
+                            Height="Auto"
+                            BorderThickness="0, 0, 0, 1px"
+                            BorderBrush="Black">
 
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="10, 0, 0, 0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="40" Height="Auto"/>
+                                <RowDefinition MinHeight="40" Height="Auto"/>
+                                <RowDefinition MinHeight="40" Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
 
-                            <Border Width="40"  Height="40" CornerRadius="25" Background="White"/>
 
-                            <StackPanel>
-                                <Label Content="{Binding FromStation}" Foreground="Black" FontSize="13"/>
-                            </StackPanel>
+                            <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Content="Откуда: " 
+                                    Foreground="Black" 
+                                    FontSize="13"
+                                    FontWeight="Bold"/>
 
-                        </StackPanel>
+                            <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Content="{Binding FromStation}" 
+                                    Foreground="Black" 
+                                    FontSize="13"/>
+
+                            <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Content="Куда: " 
+                                    Foreground="Black" 
+                                    FontSize="13"
+                                    FontWeight="Bold"/>
+
+                            <Label 
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Content="{Binding ToStation}" 
+                                    Foreground="Black" 
+                                    FontSize="13"/>
+
+                            <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Content="Дата: " 
+                                    Foreground="Black" 
+                                    FontSize="13"
+                                    FontWeight="Bold"/>
+
+                            <Label 
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Content="{Binding Date}" 
+                                    Foreground="Black" 
+                                    FontSize="13"/>
+
+                            <Label 
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="Цена: " 
+                                    Foreground="Black" 
+                                    FontSize="13"
+                                    FontWeight="Bold"/>
+
+                            <Label 
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Content="{Binding Price}" 
+                                    Foreground="Black" 
+                                    FontSize="13"/>
+
+                        </Grid>
+
+                        <!--<StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding ToStation}" Foreground="Black" FontSize="13"/>
+                                <Label Content="{Binding Date}" Foreground="Black" FontSize="13"/>
+                                <Label Content="{Binding Price}" Foreground="Black" FontSize="13"/>
+                            </StackPanel>-->
+
 
                     </Border>
                 </ControlTemplate>

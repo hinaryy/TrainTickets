@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TrainTickets.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="1080"
       Title="TicketPurchasePage">
 
     <Grid Background="White">
@@ -30,7 +30,7 @@
             </Hyperlink>
         </TextBlock>
 
-        <StackPanel Grid.Column="1" Width="600" Margin="0, 50, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="1" Width="600" VerticalAlignment="Center" HorizontalAlignment="Center">
             <!--откуда-->
             <Label Content="Откуда"/>
             <ComboBox 
@@ -54,12 +54,21 @@
                 Command="{Binding SearchTicketsCommand}"/>
 
             <ListView 
-                Height="150px"
+                
+                Height="250px"
                 Margin="0, 26, 0, 0"
                 ItemsSource="{Binding Routes}"
                 SelectedItem="{Binding SelectedRoute}"
                 ItemContainerStyle="{StaticResource RouteCard}"
                 />
+
+            <Button
+                Height="30"
+                Background="White"
+                Margin="0, 26, 0, 0"
+                Content="Купить"
+                Command="{Binding SearchTicketsCommand}"/>
+
         </StackPanel>
     </Grid>
 </Page>

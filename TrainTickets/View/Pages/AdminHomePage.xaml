@@ -26,7 +26,7 @@
                         FontWeight="SemiBold"
                         TextDecorations="None"
                         Command="{Binding NavigationToSignInPageCommand}">
-                Назад
+                Выйти
             </Hyperlink>
         </TextBlock>
 

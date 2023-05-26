@@ -12,8 +12,8 @@ namespace TrainTickets.Model
     {
         [Key]
         public int Id { set; get; }
-        public int FromStation { set; get; }
-        public int ToStation { set; get; }
+        public string FromStation { set; get; }
+        public string ToStation { set; get; }
         public DateTime Date { set; get; }
         public double Price { set; get; }
     }

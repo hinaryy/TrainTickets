@@ -52,7 +52,7 @@ namespace TrainTickets.View.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TrainTickets;component/view/pages/signinpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TrainTickets;V1.0.0.0;component/view/pages/signinpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Pages\SignInPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
