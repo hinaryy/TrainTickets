@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace TrainTickets.ViewModel
         private List<string> _stations;
         private List<Route> _routes;
         private Route _selectedRoute;
+        private int _balance;
         public Route SelectedRoute 
         { 
             get => _selectedRoute;
@@ -80,6 +83,7 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged();
             } 
         }
+        public int Balance { get => _balance; set => _balance = value; }
 
 
         public TicketPurchaseViewModel(ApplicationDbContext context, INavigationService navigationService)
@@ -95,16 +99,23 @@ namespace TrainTickets.ViewModel
 
             Routes = _context.Routes.ToList();
             Routes.OrderByDescending(i => i.Date);
+
+            var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
+
+            Balance = user.WalletBalance;
+
+            SelectedRoute = Routes[0];
+            
         }
 
         private bool CanExecuteBuyTicketCommand(object obj)
         {
-            return true;
+            return Balance >= SelectedRoute.Price;
         }
 
         private void ExecuteBuyTicketCommand(object obj)
         {
-
+           // _context.Users.Update()
         }
 
         private bool CanExecuteSearchTicketsCommand(object obj)

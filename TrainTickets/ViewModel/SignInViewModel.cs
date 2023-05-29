@@ -1,15 +1,9 @@
-﻿using TrainTickets.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Input;
-using System.Windows;
 using TrainTickets.Interfaces;
 using TrainTickets.Persistence;
-using TrainTickets.Model;
-using System.Threading;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace TrainTickets.ViewModel
 {
@@ -82,17 +76,28 @@ namespace TrainTickets.ViewModel
 
             var user = _context.Users.FirstOrDefault(i => i.Name == Name && i.Password == Password);
 
-            if(user.Name.EndsWith("admin"))
+            if (user == null)
+            {
+                ErrorMessage = "Пароль или логин некорректный";
+
+            }
+            else if (user.Name.EndsWith("admin"))
             {
                 NavigationService.NavigateTo<AdminHomeViewModel>();
             }
-            else if (user != null) 
+            else if (user != null)
             {
+                using (StreamWriter file = File.CreateText("user.json"))
+                {
+                    JsonSerializer serializer = new JsonSerializer()
+                    {
+                        Formatting = Formatting.Indented
+                    };
+
+                    serializer.Serialize(file, user);
+                }
+
                 NavigationService.NavigateTo<HomeViewModel>();
-            }
-            else
-            {
-                ErrorMessage = "Пароль или логин некорректный";
             }
         }
     }

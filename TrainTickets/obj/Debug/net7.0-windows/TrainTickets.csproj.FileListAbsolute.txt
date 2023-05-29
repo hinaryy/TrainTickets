@@ -98,3 +98,4 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\sv\Xceed
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\zh-Hans\Xceed.Wpf.AvalonDock.NET5.resources.dll
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\UserTickets.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\UserTickets.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\Newtonsoft.Json.dll

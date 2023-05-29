@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TrainTickets.Interfaces;
+using TrainTickets.Model;
 using TrainTickets.Persistence;
 
 namespace TrainTickets.ViewModel
@@ -17,6 +20,8 @@ namespace TrainTickets.ViewModel
 
         private ApplicationDbContext _context;
         private INavigationService _navigationService;
+        private int _balance;
+        public int Balance { get => _balance; set => _balance = value; }
 
         public AdminHomeViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
@@ -25,6 +30,11 @@ namespace TrainTickets.ViewModel
             NavigationToRouteAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteAddingViewModel>());
             NavigationToStationAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationAddingViewModel>());
             NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
+
+            var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("admin.json"))!;
+
+            Balance = user.WalletBalance;
+
         }
 
         public INavigationService NavigationService
