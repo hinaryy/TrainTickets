@@ -42,6 +42,16 @@
             Background="White"
             Command="{Binding NavigationToTicketPurchasePageCommand}"/>
 
+            <Button 
+            Content="Мои билеты" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Width="300" 
+            Height="50"
+            Margin="0, 0, 0, 20"
+            Background="White"
+            Command="{Binding NavigationToUserTickersPageCommand}"/>
+
 
         </StackPanel>
 

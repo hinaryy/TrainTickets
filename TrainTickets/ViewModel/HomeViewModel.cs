@@ -12,6 +12,7 @@ namespace TrainTickets.ViewModel
     public class HomeViewModel : ViewModelBase
     {
         public ICommand NavigationToTicketPurchasePageCommand { get; }
+        public ICommand NavigationToUserTickersPageCommand { get; }
         public ICommand NavigationToSignInPageCommand { get; }
 
         private ApplicationDbContext _context;
@@ -22,6 +23,7 @@ namespace TrainTickets.ViewModel
             _context = context;
             _navigationService = navigationService;
             NavigationToTicketPurchasePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<TicketPurchaseViewModel>());
+            NavigationToUserTickersPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<UserTicketsViewModel>());
             NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
         }
 

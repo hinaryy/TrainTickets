@@ -53,7 +53,7 @@ namespace TrainTickets.View.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TrainTickets;V1.0.0.0;component/view/pages/ticketpurchasepage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TrainTickets;component/view/pages/ticketpurchasepage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\Pages\TicketPurchasePage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

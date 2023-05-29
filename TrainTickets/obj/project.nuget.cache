@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "vn2fgbD1WJesCbZtmYGOXM2XpaTaMqykxn8GAQRDCeM3jjaXm19geIXFW80dXXfURj5uAo4xfGCA3gDytL1Znw==",
+  "dgSpecHash": "P0d+nkxuE81LhvSwaNFopuRsm2RIrZlCl/iYWUxHyD5//cR9gSdUgiVZA3yoQNeC8wlGKO3ufdTuFCl+rsyNPQ==",
   "success": true,
   "projectFilePath": "D:\\Files\\Course 2\\C#\\TrainTickets\\TrainTickets\\TrainTickets.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\extended.wpf.toolkit\\4.5.0\\extended.wpf.toolkit.4.5.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

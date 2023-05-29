@@ -31,6 +31,9 @@
     <Compile Update="View\Pages\TicketPurchasePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\UserTickets.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Styles\Colors.xaml">
@@ -73,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\TicketPurchasePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\UserTickets.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

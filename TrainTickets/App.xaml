@@ -43,6 +43,10 @@
                 <view:TicketPurchasePage/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type TypeName=viewModel:UserTicketsViewModel}">
+                <view:UserTickets/>
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type TypeName=viewModel:SignUpViewModel}">
                 <view:SignUpPage/>
             </DataTemplate>

@@ -47,7 +47,9 @@
                 Height="30"/>
 
             <!--дата-->
-            <Label Content="Дата"/>
+            <Label Content="Дата"/> 
+            
+
             <DatePicker 
                 Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 SelectedDate="01/01/2023"
