@@ -24,7 +24,7 @@ namespace TrainTickets.ViewModel
         private string _fromStation;
         private string _toStation;
         private DateTime _date = new DateTime(2023, 1, 1, 12, 00, 00);
-        private double _price;
+        private int _price;
         private List<string> _stations;
 
         public List<string> Stations 
@@ -72,7 +72,7 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged(nameof(Date));
             }
         }
-        public double Price 
+        public int Price 
         { 
             get => _price;
             set
@@ -108,9 +108,6 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteAddRouteCommand(object obj)
         {
-            //int fromStationId = _context.Stations.FirstOrDefault(i => i.Name == FromStation).Id;
-            //int toStationId = _context.Stations.FirstOrDefault(i => i.Name == ToStation).Id;
-
             var route = new Route
             {
                 FromStation = FromStation,

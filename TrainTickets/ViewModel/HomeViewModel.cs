@@ -33,7 +33,7 @@ namespace TrainTickets.ViewModel
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
 
-            Balance = user.WalletBalance;
+            Balance = _context.Users.FirstOrDefault(i => i.Id == user.Id).WalletBalance;
         }
 
         public INavigationService NavigationService

@@ -25,6 +25,7 @@ namespace TrainTickets.ViewModel
         private List<Route> _routes;
         private Route _selectedRoute;
         private int _balance;
+        private User _user;
         public Route SelectedRoute 
         { 
             get => _selectedRoute;
@@ -83,8 +84,16 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged();
             } 
         }
-        public int Balance { get => _balance; set => _balance = value; }
-
+        public int Balance 
+        { 
+            get => _balance;
+            set 
+            {
+                _balance = value;
+                OnPropertyChanged();
+            } 
+        }
+        public User User { get => _user; set => _user = value; }
 
         public TicketPurchaseViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
@@ -102,20 +111,32 @@ namespace TrainTickets.ViewModel
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
 
-            Balance = user.WalletBalance;
+            User = _context.Users.FirstOrDefault(i => i.Id == user.Id);
+            Balance = User.WalletBalance;
 
             SelectedRoute = Routes[0];
-            
         }
 
         private bool CanExecuteBuyTicketCommand(object obj)
         {
             return Balance >= SelectedRoute.Price;
         }
-
+        
         private void ExecuteBuyTicketCommand(object obj)
         {
-           // _context.Users.Update()
+            User.WalletBalance -= SelectedRoute.Price;
+            _context.Users.Update(User);
+
+            Balance = User.WalletBalance;
+
+            var ticket = new Ticket
+            {
+                User = User,
+                Route = SelectedRoute
+            };
+
+            _context.Tickets.Add(ticket);
+            _context.SaveChanges();
         }
 
         private bool CanExecuteSearchTicketsCommand(object obj)
