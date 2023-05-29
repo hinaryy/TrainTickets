@@ -107,6 +107,7 @@ namespace TrainTickets.ViewModel
 
             NavigationService.NavigateTo<SignInViewModel>();
 
+
         }
     }
 }

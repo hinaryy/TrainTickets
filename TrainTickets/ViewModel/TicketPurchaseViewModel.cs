@@ -21,6 +21,16 @@ namespace TrainTickets.ViewModel
         private string _toStation;
         private List<string> _stations;
         private List<Route> _routes;
+        private Route _selectedRoute;
+        public Route SelectedRoute 
+        { 
+            get => _selectedRoute;
+            set
+            {
+                _selectedRoute = value;
+                OnPropertyChanged();
+            } 
+        }
         public List<string> Stations
         {
             get => _stations;
@@ -60,6 +70,7 @@ namespace TrainTickets.ViewModel
         }
         public ICommand NavigationToHomePageCommand { get; }
         public ICommand SearchTicketsCommand { get; }
+        public ICommand BuyTicketCommand { get; }
         public List<Route> Routes 
         { 
             get => _routes;
@@ -70,18 +81,30 @@ namespace TrainTickets.ViewModel
             } 
         }
 
+
         public TicketPurchaseViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
             _context = context;
             _navigationService = navigationService;
             NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>());
             SearchTicketsCommand = new ViewModelCommand(ExecuteSearchTicketsCommand, CanExecuteSearchTicketsCommand);
+            BuyTicketCommand = new ViewModelCommand(ExecuteBuyTicketCommand, CanExecuteBuyTicketCommand);
 
             Stations = _context.Stations.Select(i => i.Name).ToList();
             Stations.Sort();
 
             Routes = _context.Routes.ToList();
             Routes.OrderByDescending(i => i.Date);
+        }
+
+        private bool CanExecuteBuyTicketCommand(object obj)
+        {
+            return true;
+        }
+
+        private void ExecuteBuyTicketCommand(object obj)
+        {
+
         }
 
         private bool CanExecuteSearchTicketsCommand(object obj)
@@ -92,9 +115,6 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteSearchTicketsCommand(object obj)
         {
-            //int fromStationId = _context.Stations.FirstOrDefault(i => i.Name == FromStation).Id;
-            //int toStationId = _context.Stations.FirstOrDefault(i => i.Name == ToStation).Id;
-
             Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
         }
     }

@@ -58,7 +58,7 @@
                 Height="250px"
                 Margin="0, 26, 0, 0"
                 ItemsSource="{Binding Routes}"
-                SelectedItem="{Binding SelectedRoute}"
+                SelectedItem="{Binding SelectedRoute, UpdateSourceTrigger=PropertyChanged}"
                 ItemContainerStyle="{StaticResource RouteCard}"
                 />
 
@@ -67,7 +67,7 @@
                 Background="White"
                 Margin="0, 26, 0, 0"
                 Content="Купить"
-                Command="{Binding SearchTicketsCommand}"/>
+                Command="{Binding BuyTicketCommand}"/>
 
         </StackPanel>
     </Grid>

@@ -16,6 +16,8 @@ namespace TrainTickets.ViewModel
         private INavigationService _navigationService;
         private string _fromStation;
         private string _toStation;
+
+        private Ticket _ticket;
         public string FromStation
         {
             get => _fromStation;
@@ -46,6 +48,8 @@ namespace TrainTickets.ViewModel
         }
         public ICommand NavigationToHomePageCommand { get; }
         public ICommand SearchTicketsCommand { get; }
+        public Ticket Ticket { get => _ticket; set => _ticket = value; }
+
         public UserTicketsViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
             _context = context;

@@ -29,11 +29,21 @@
                         Command="{Binding NavigationToHomePageCommand}">
                 Назад
             </Hyperlink>
-
-            <ListView>
-                
-            </ListView>
-            
         </TextBlock>
+
+        <StackPanel
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="600"
+            >
+            <ListView 
+                Height="400"
+                ItemsSource="{Binding Tickets}"
+                >
+
+            </ListView>
+        </StackPanel>
+
     </Grid>
 </Page>
