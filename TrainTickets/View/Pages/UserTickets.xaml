@@ -38,11 +38,14 @@
             Width="600"
             >
             <ListView 
-                Height="400"
-                ItemsSource="{Binding Tickets}"
-                >
+                
+                Height="250px"
+                Margin="0, 26, 0, 0"
+                ItemsSource="{Binding Routes}"
+                SelectedItem="{Binding SelectedRoute, UpdateSourceTrigger=PropertyChanged}"
+                ItemContainerStyle="{StaticResource RouteCard}"
+                />
 
-            </ListView>
         </StackPanel>
 
     </Grid>

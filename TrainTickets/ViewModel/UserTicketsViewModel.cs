@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,8 @@ namespace TrainTickets.ViewModel
         private string _fromStation;
         private string _toStation;
 
-        private Ticket _ticket;
+        private List<Route> _routes;
+        private List<Ticket> _tickets;
         public string FromStation
         {
             get => _fromStation;
@@ -48,7 +51,8 @@ namespace TrainTickets.ViewModel
         }
         public ICommand NavigationToHomePageCommand { get; }
         public ICommand SearchTicketsCommand { get; }
-        public Ticket Ticket { get => _ticket; set => _ticket = value; }
+        public List<Route> Routes { get => _routes; set => _routes = value; }
+        public List<Ticket> Tickets { get => _tickets; set => _tickets = value; }
 
         public UserTicketsViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
@@ -57,6 +61,11 @@ namespace TrainTickets.ViewModel
             NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>());
             SearchTicketsCommand = new ViewModelCommand(ExecuteSearchTicketsCommand, CanExecuteSearchTicketsCommand);
 
+            var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
+
+            Tickets = _context.Tickets.Where(i => i.User.Id == user.Id).ToList();
+
+            Routes = Tickets.Select(i => i.Route).ToList();
         }
 
         private bool CanExecuteSearchTicketsCommand(object obj)

@@ -111,7 +111,7 @@ namespace TrainTickets.ViewModel
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
 
-            User = _context.Users.FirstOrDefault(i => i.Id == user.Id);
+            User = _context.Users.FirstOrDefault(i => i.Id == user.Id)!;
             Balance = User.WalletBalance;
 
             SelectedRoute = Routes[0];

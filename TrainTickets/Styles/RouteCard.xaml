@@ -94,11 +94,6 @@
 
                         </Grid>
 
-                        <!--<StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding ToStation}" Foreground="Black" FontSize="13"/>
-                                <Label Content="{Binding Date}" Foreground="Black" FontSize="13"/>
-                                <Label Content="{Binding Price}" Foreground="Black" FontSize="13"/>
-                            </StackPanel>-->
 
 
                     </Border>

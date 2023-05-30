@@ -8,7 +8,6 @@ namespace TrainTickets.ViewModel
 
         private readonly Action<object> _executeAction;
         private readonly Predicate<object> _canExecuteAction;
-        private ICommand recoverPasswordCommand;
 
         public ViewModelCommand(Action<object> executeAction)
         {
