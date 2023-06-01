@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -119,7 +120,7 @@ namespace TrainTickets.ViewModel
 
         private bool CanExecuteBuyTicketCommand(object obj)
         {
-            return Balance >= SelectedRoute.Price;
+            return (!Routes.IsNullOrEmpty() && Balance >= SelectedRoute.Price);
         }
         
         private void ExecuteBuyTicketCommand(object obj)
@@ -148,6 +149,9 @@ namespace TrainTickets.ViewModel
         private void ExecuteSearchTicketsCommand(object obj)
         {
             Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
+
+            if(!Routes.IsNullOrEmpty())
+                SelectedRoute = Routes[0];
         }
     }
 }

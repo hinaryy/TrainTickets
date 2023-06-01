@@ -99,3 +99,4 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\zh-Hans\
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\UserTickets.g.cs
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\UserTickets.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\UserTicketCard.baml
