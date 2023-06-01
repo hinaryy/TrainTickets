@@ -115,11 +115,14 @@ namespace TrainTickets.ViewModel
             User = _context.Users.FirstOrDefault(i => i.Id == user.Id)!;
             Balance = User.WalletBalance;
 
-            SelectedRoute = Routes[0];
+            //SelectedRoute = Routes[0];
         }
 
         private bool CanExecuteBuyTicketCommand(object obj)
         {
+            if (SelectedRoute == null)
+                return false;
+
             return (!Routes.IsNullOrEmpty() && Balance >= SelectedRoute.Price);
         }
         
@@ -149,9 +152,10 @@ namespace TrainTickets.ViewModel
         private void ExecuteSearchTicketsCommand(object obj)
         {
             Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
+            SelectedRoute = null;
 
-            if(!Routes.IsNullOrEmpty())
-                SelectedRoute = Routes[0];
+            //if(!Routes.IsNullOrEmpty())
+            //    SelectedRoute = Routes[0];
         }
     }
 }

@@ -18,6 +18,7 @@ namespace TrainTickets.ViewModel
         private INavigationService _navigationService;
         private string _fromStation;
         private string _toStation;
+        private Route _selectedRoute;
 
         private List<Route> _routes;
         private List<Ticket> _tickets;
@@ -39,6 +40,15 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged(nameof(ToStation));
             }
         }
+        public Route SelectedRoute
+        {
+            get => _selectedRoute;
+            set
+            {
+                _selectedRoute = value;
+                OnPropertyChanged();
+            }
+        }
 
         public INavigationService NavigationService
         {
@@ -50,7 +60,7 @@ namespace TrainTickets.ViewModel
             }
         }
         public ICommand NavigationToHomePageCommand { get; }
-        public ICommand SearchTicketsCommand { get; }
+        public ICommand PrintTicketCommand { get; }
         public List<Route> Routes { get => _routes; set => _routes = value; }
         public List<Ticket> Tickets { get => _tickets; set => _tickets = value; }
 
@@ -59,22 +69,23 @@ namespace TrainTickets.ViewModel
             _context = context;
             _navigationService = navigationService;
             NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>());
-            SearchTicketsCommand = new ViewModelCommand(ExecuteSearchTicketsCommand, CanExecuteSearchTicketsCommand);
+            PrintTicketCommand = new ViewModelCommand(ExecutePrintTicketCommandCommand, CanExecutePrintTicketCommandCommand);
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
+
+            var r = _context.Routes.ToList();
 
             Tickets = _context.Tickets.Where(i => i.User.Id == user.Id).ToList();
 
             Routes = Tickets.Select(i => i.Route).ToList();
         }
 
-        private bool CanExecuteSearchTicketsCommand(object obj)
+        private bool CanExecutePrintTicketCommandCommand(object obj)
         {
-            return !string.IsNullOrEmpty(ToStation)
-                && !string.IsNullOrEmpty(FromStation);
+            return true;
         }
 
-        private void ExecuteSearchTicketsCommand(object obj)
+        private void ExecutePrintTicketCommandCommand(object obj)
         {
 
         }
