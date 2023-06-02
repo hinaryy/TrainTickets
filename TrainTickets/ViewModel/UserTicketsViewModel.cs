@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Office.Interop.Word;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,12 +84,52 @@ namespace TrainTickets.ViewModel
 
         private bool CanExecutePrintTicketCommandCommand(object obj)
         {
-            return true;
+            return SelectedRoute != null;
         }
 
         private void ExecutePrintTicketCommandCommand(object obj)
         {
 
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Документ Word (*.docx)|*.docx";
+            saveFileDialog.Title = "Сохранить документ Word";
+            saveFileDialog.FileName = SelectedRoute.FromStation + "-" + SelectedRoute.ToStation + " " + SelectedRoute.Date.ToShortDateString();
+            saveFileDialog.ShowDialog();
+
+            if (saveFileDialog.FileName != "")
+            {
+                Application word = new Application();
+                Document doc = word.Documents.Add();
+
+                doc.PageSetup.PaperSize = WdPaperSize.wdPaperA4;
+
+                Paragraph para = doc.Paragraphs.Add();
+
+                para.Range.Text = "Билетик №" + Tickets.FirstOrDefault(i => i.Route == SelectedRoute).Id! + "\n";
+                para.Range.Bold = 1;
+
+                para.Range.Text += "Откуда: ";
+                para.Range.Bold = 1;
+
+                para.Range.Text += SelectedRoute.FromStation;
+                para.Range.Bold = 0;
+
+                para.Range.Text += "\nКуда: ";
+                para.Range.Bold = 1;
+
+                para.Range.Text += SelectedRoute.ToStation;
+                para.Range.Bold = 0;
+
+                para.Range.Text += "\nДата: ";
+                para.Range.Bold = 1;
+
+                para.Range.Text += SelectedRoute.Date.ToShortDateString();
+                para.Range.Bold = 0;
+
+                doc.SaveAs2(saveFileDialog.FileName);
+
+                word.Quit();
+            }
         }
 
     }
