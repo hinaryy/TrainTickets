@@ -1,0 +1,56 @@
+﻿<Page x:Class="TrainTickets.View.Pages.RouteDeletingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainTickets.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RouteDeletingPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            FontWeight="Medium"
+            FontSize="13"
+            Margin="0, 10, 0, 0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Grid.Column="0">
+                    
+            <Hyperlink Foreground="Black"
+                        FontWeight="SemiBold"
+                        TextDecorations="None"
+                        Command="{Binding NavigationToAdminHomePageCommand}">
+                Назад
+            </Hyperlink>
+        </TextBlock>
+
+        <StackPanel 
+            Width="500"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Grid.Column="1">
+
+            <ListView 
+                Height="250px"
+                Margin="0, 0, 0, 0"
+                ItemsSource="{Binding Routes, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding SelectedRoute, UpdateSourceTrigger=PropertyChanged}"
+                ItemContainerStyle="{StaticResource RouteCard}"
+                />
+
+            <Button 
+                Content="Удалить маршрут"
+                Background="White"
+                Margin="0 26 0 0 "
+                Height="30"
+                Command="{Binding DeleteRouteCommand}"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

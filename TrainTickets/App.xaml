@@ -36,8 +36,16 @@
                 <view:RouteAddingPage/>
             </DataTemplate>
             
+            <DataTemplate DataType="{x:Type TypeName=viewModel:RouteDeletingViewModel}">
+                <view:RouteDeletingPage/>
+            </DataTemplate>
+            
             <DataTemplate DataType="{x:Type TypeName=viewModel:StationAddingViewModel}">
                 <view:StationAddingPage/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type TypeName=viewModel:StationDeletingViewModel}">
+                <view:StationDeletingPage/>
             </DataTemplate>
             
             <DataTemplate DataType="{x:Type TypeName=viewModel:TicketPurchaseViewModel}">

@@ -102,3 +102,7 @@ D:\Files\Course 2\C#\TrainTickets\TrainTickets\bin\Debug\net7.0-windows\Newtonso
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Styles\UserTicketCard.baml
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\Interop.Microsoft.Office.Interop.Word.dll
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\TrainTickets.csproj.ResolveComReference.cache
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\RouteDeletingPage.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\StationDeletingPage.g.cs
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\RouteDeletingPage.baml
+D:\Files\Course 2\C#\TrainTickets\TrainTickets\obj\Debug\net7.0-windows\View\Pages\StationDeletingPage.baml

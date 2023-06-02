@@ -89,7 +89,6 @@ namespace TrainTickets.ViewModel
 
         private void ExecutePrintTicketCommandCommand(object obj)
         {
-
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Документ Word (*.docx)|*.docx";
             saveFileDialog.Title = "Сохранить документ Word";

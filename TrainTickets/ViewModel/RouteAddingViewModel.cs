@@ -103,7 +103,8 @@ namespace TrainTickets.ViewModel
                 && !string.IsNullOrEmpty(ToStation)
                 && !string.IsNullOrEmpty(Date.ToString())
                 && !string.IsNullOrEmpty(Price.ToString())
-                && !(Price == 0);
+                && !(Price == 0)
+                && !(FromStation == ToStation);
         }
 
         private void ExecuteAddRouteCommand(object obj)

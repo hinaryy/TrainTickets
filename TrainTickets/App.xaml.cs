@@ -33,12 +33,19 @@ namespace TrainTickets
            
             services.AddSingleton<SignUpViewModel>();
             services.AddSingleton<SignInViewModel>();
-            services.AddSingleton<AdminHomeViewModel>();
-            services.AddTransient<RouteAddingViewModel>();
-            services.AddSingleton<StationAddingViewModel>();
-            services.AddTransient<UserTicketsViewModel>();
+
             services.AddSingleton<HomeViewModel>();
+            services.AddSingleton<AdminHomeViewModel>();
+
+            services.AddTransient<RouteAddingViewModel>();
+            services.AddTransient<RouteDeletingViewModel>();
+
+            services.AddTransient<StationDeletingViewModel>();
+            services.AddSingleton<StationAddingViewModel>();
+
+            services.AddTransient<UserTicketsViewModel>();
             services.AddTransient<TicketPurchaseViewModel>();
+
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<INavigationService, NavigationService>();
 

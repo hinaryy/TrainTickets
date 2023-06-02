@@ -19,6 +19,9 @@
     <Compile Update="View\Pages\RouteAddingPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\RouteDeletingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Pages\SignInPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -26,6 +29,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\StationAddingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\StationDeletingPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\TicketPurchasePage.xaml.cs">
@@ -69,6 +75,9 @@
     <Page Update="View\Pages\RouteAddingPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Pages\RouteDeletingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Pages\SignInPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -76,6 +85,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\StationAddingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\StationDeletingPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\TicketPurchasePage.xaml">

@@ -15,25 +15,25 @@ namespace TrainTickets.ViewModel
     class AdminHomeViewModel : ViewModelBase
     {
         public ICommand NavigationToRouteAddingPageCommand { get; }
+        public ICommand NavigationToRouteDeletingPageCommand { get; }
         public ICommand NavigationToStationAddingPageCommand { get; }
+        public ICommand NavigationToStationDeletingPageCommand { get; }
         public ICommand NavigationToSignInPageCommand { get; }
 
         private ApplicationDbContext _context;
         private INavigationService _navigationService;
-        private int _balance;
-        public int Balance { get => _balance; set => _balance = value; }
 
         public AdminHomeViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
             _context = context;
             _navigationService = navigationService;
             NavigationToRouteAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteAddingViewModel>());
+            NavigationToRouteDeletingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteDeletingViewModel>());
             NavigationToStationAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationAddingViewModel>());
+            NavigationToStationDeletingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationDeletingViewModel>());
             NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("admin.json"))!;
-
-            Balance = user.WalletBalance;
 
         }
 

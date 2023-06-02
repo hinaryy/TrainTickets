@@ -7,7 +7,7 @@
       d:DesignHeight="600" d:DesignWidth="880"
       Title="SignInPage">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="360"/>

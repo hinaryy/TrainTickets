@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Files\Course 2\C#\TrainTickets\TrainTickets\App.xaml
-16-1227115623
+18-1122878116
 
-33316739625
+371705270896
 233-2044376791
-Styles\Colors.xaml;Styles\ContronPanelButtonStyle.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\MainWindowStyle.xaml;Styles\RouteCard.xaml;Styles\UserTicketCard.xaml;View\MainWindow.xaml;View\Pages\AdminHomePage.xaml;View\Pages\HomePage.xaml;View\Pages\RouteAddingPage.xaml;View\Pages\SignInPage.xaml;View\Pages\SignUpPage.xaml;View\Pages\StationAddingPage.xaml;View\Pages\TicketPurchasePage.xaml;View\Pages\UserTickets.xaml;
+Styles\Colors.xaml;Styles\ContronPanelButtonStyle.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\MainWindowStyle.xaml;Styles\RouteCard.xaml;Styles\UserTicketCard.xaml;View\MainWindow.xaml;View\Pages\AdminHomePage.xaml;View\Pages\HomePage.xaml;View\Pages\RouteAddingPage.xaml;View\Pages\RouteDeletingPage.xaml;View\Pages\SignInPage.xaml;View\Pages\SignUpPage.xaml;View\Pages\StationAddingPage.xaml;View\Pages\StationDeletingPage.xaml;View\Pages\TicketPurchasePage.xaml;View\Pages\UserTickets.xaml;
 
 False
 
