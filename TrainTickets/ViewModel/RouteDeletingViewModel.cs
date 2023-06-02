@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TrainTickets.Interfaces;
 using TrainTickets.Model;
@@ -20,6 +21,11 @@ namespace TrainTickets.ViewModel
         private Route _selectedRoute;
 
         private List<Route> _routes;
+        private List<string> _stations;
+        private string _fromStation;
+        private string _toStation;
+        private DateTime _date = new DateTime(2023, 01, 01);
+        private int _price;
         public Route SelectedRoute
         {
             get => _selectedRoute;
@@ -41,15 +47,64 @@ namespace TrainTickets.ViewModel
         }
         public ICommand NavigationToAdminHomePageCommand { get; }
         public ICommand DeleteRouteCommand { get; }
-        public List<Route> Routes 
-        { 
+        public ICommand EditRouteCommand { get; }
+        public ICommand SaveEditedRouteCommand { get; }
+
+        public List<Route> Routes
+        {
             get => _routes;
-            set 
+            set
             {
                 _routes = value;
                 OnPropertyChanged(nameof(Routes));
             }
         }
+        public List<string> Stations
+        {
+            get => _stations;
+            set 
+            {
+                _stations = value;
+                OnPropertyChanged(nameof(Stations));
+            }  
+        }
+        public string FromStation
+        {
+            get => _fromStation;
+            set
+            {
+                _fromStation = value;
+                OnPropertyChanged(nameof(FromStation));
+            }
+        }
+        public string ToStation
+        {
+            get => _toStation;
+            set
+            {
+                _toStation = value;
+                OnPropertyChanged(nameof(ToStation));
+            }
+        }
+        public DateTime Date
+        {
+            get => _date;
+            set
+            {
+                _date = value;
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+        public int Price
+        {
+            get => _price;
+            set
+            {
+                _price = value;
+                OnPropertyChanged(nameof(Price));
+            }
+        }
+
 
         public RouteDeletingViewModel(ApplicationDbContext context, INavigationService navigationService)
         {
@@ -57,9 +112,49 @@ namespace TrainTickets.ViewModel
             _navigationService = navigationService;
             NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>());
             DeleteRouteCommand = new ViewModelCommand(ExecuteDeleteRouteCommand, CanExecuteDeleteRouteCommand);
+            EditRouteCommand = new ViewModelCommand(ExecuteEditRouteCommand, CanExecuteEditRouteCommand);
+            SaveEditedRouteCommand = new ViewModelCommand(ExecuteSaveEditedRouteCommand, CanExecuteSaveEditedRouteCommand);
 
             Routes = _context.Routes.ToList();
+
+            Stations = _context.Stations.Select(i => i.Name).ToList();
+            Stations.Sort();
         }
+
+        private bool CanExecuteSaveEditedRouteCommand(object obj)
+        {
+            return true;
+        }
+
+        private void ExecuteSaveEditedRouteCommand(object obj)
+        {
+            if(SelectedRoute != null)
+            {
+                SelectedRoute.FromStation = FromStation;
+                SelectedRoute.ToStation = ToStation;
+                SelectedRoute.Date = Date;
+                SelectedRoute.Price = Price;
+
+                _context.Update(SelectedRoute);
+                _context.SaveChanges();
+
+                Routes = _context.Routes.ToList();
+            }
+        }
+
+        private bool CanExecuteEditRouteCommand(object obj)
+        {
+            return SelectedRoute != null;
+        }
+
+        private void ExecuteEditRouteCommand(object obj)
+        {
+            FromStation = SelectedRoute.FromStation;
+            ToStation = SelectedRoute.ToStation;
+            Date = SelectedRoute.Date;
+            Price = SelectedRoute.Price;
+        }
+
         private bool CanExecuteDeleteRouteCommand(object obj)
         {
             return SelectedRoute != null;

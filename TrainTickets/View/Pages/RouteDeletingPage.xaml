@@ -29,14 +29,19 @@
                 Назад
             </Hyperlink>
         </TextBlock>
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Grid.Column="1"
+            Orientation="Horizontal">
 
-        <StackPanel 
-            Width="500"
+            <StackPanel 
+            Width="350"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Grid.Column="1">
 
-            <ListView 
+                <ListView 
                 Height="250px"
                 Margin="0, 0, 0, 0"
                 ItemsSource="{Binding Routes, UpdateSourceTrigger=PropertyChanged}"
@@ -44,13 +49,75 @@
                 ItemContainerStyle="{StaticResource RouteCard}"
                 />
 
-            <Button 
+                <Button 
                 Content="Удалить маршрут"
                 Background="White"
                 Margin="0 26 0 0 "
                 Height="30"
                 Command="{Binding DeleteRouteCommand}"/>
+                
+                <Button 
+                Content="Изменить маршрут"
+                Background="White"
+                Margin="0 26 0 0 "
+                Height="30"
+                Command="{Binding EditRouteCommand}"/>
 
+            </StackPanel>
+            <StackPanel 
+                Width="150"
+                Margin="26 0 0 0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top">
+
+                <Label Content="Откуда:" Margin="0 1 0 0"/>
+                <ComboBox 
+                ItemsSource="{Binding Stations}"
+                Text="{Binding FromStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"
+                Margin="0 0 0 8"
+                />
+
+                
+                
+                
+                <Label Content="Куда:"/>
+                <ComboBox 
+                ItemsSource="{Binding Stations}"
+                Text="{Binding ToStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"
+                Margin="0 0 0 8"/>
+
+                
+                
+                
+                <Label Content="Дата"/>
+                <DatePicker 
+                Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                SelectedDate="01/01/2023"
+                Height="30"
+                Background="White"
+                Margin="0 0 0 8"/>
+
+                
+                
+                
+                <Label Content="Цена"/>
+                <TextBox
+                    Height="30"
+                    Margin="0 0 0 0"
+                    Text="{Binding Price,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button 
+                    Content="Сохранить"
+                    Background="White"
+                    Height="30"
+                    Margin="0 26 0 0"
+                    Command="{Binding SaveEditedRouteCommand}"/>
+
+
+
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

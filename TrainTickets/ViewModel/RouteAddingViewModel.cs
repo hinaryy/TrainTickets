@@ -23,7 +23,7 @@ namespace TrainTickets.ViewModel
 
         private string _fromStation;
         private string _toStation;
-        private DateTime _date = new DateTime(2023, 1, 1, 12, 00, 00);
+        private DateTime _date = DateTime.Today;
         private int _price;
         private List<string> _stations;
 
@@ -124,10 +124,8 @@ namespace TrainTickets.ViewModel
 
             FromStation = "";
             ToStation = "";
-            Date = new DateTime(2023, 1, 1, 12, 00, 00);
+            Date = DateTime.Today;
             Price = 0;
         }
-
-
     }
 }

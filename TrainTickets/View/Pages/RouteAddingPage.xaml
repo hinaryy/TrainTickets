@@ -49,11 +49,10 @@
             <!--дата-->
             <Label Content="Дата"/> 
             
-
             <DatePicker 
                 Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                SelectedDate="01/01/2023"
                 Height="30"
+                SelectedDateFormat="Short"
                 Background="White"/>
             
             <!--цена-->
