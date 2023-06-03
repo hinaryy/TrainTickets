@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using System.Windows.Input;
 using TrainTickets.Interfaces;
 using TrainTickets.Model;
@@ -22,7 +23,7 @@ namespace TrainTickets.ViewModel
         private string _toStation;
         private Route _selectedRoute;
         private int _balance;
-
+        
         private List<Route> _routes;
         private List<Ticket> _tickets;
         public string FromStation
@@ -85,13 +86,15 @@ namespace TrainTickets.ViewModel
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
 
+            user = _context.Users.FirstOrDefault(i => i.Id == user.Id)!;
+            Balance = user.WalletBalance;
+
             var r = _context.Routes.ToList();
 
             Tickets = _context.Tickets.Where(i => i.User.Id == user.Id).ToList();
 
             Routes = Tickets.Select(i => i.Route).ToList();
 
-            Balance = user.WalletBalance;
         }
 
         private bool CanExecutePrintTicketCommandCommand(object obj)
@@ -105,9 +108,8 @@ namespace TrainTickets.ViewModel
             saveFileDialog.Filter = "Документ Word (*.docx)|*.docx";
             saveFileDialog.Title = "Сохранить документ Word";
             saveFileDialog.FileName = SelectedRoute.FromStation + "-" + SelectedRoute.ToStation + " " + SelectedRoute.Date.ToShortDateString();
-            saveFileDialog.ShowDialog();
 
-            if (saveFileDialog.FileName != "")
+            if (saveFileDialog.FileName != "" && saveFileDialog.ShowDialog() == true)
             {
                 Application word = new Application();
                 Document doc = word.Documents.Add();
@@ -116,7 +118,7 @@ namespace TrainTickets.ViewModel
 
                 Paragraph para = doc.Paragraphs.Add();
 
-                para.Range.Text = "Билетик №" + Tickets.FirstOrDefault(i => i.Route == SelectedRoute).Id! + "\n";
+                para.Range.Text = "Билетик №" + Tickets.FirstOrDefault(i => i.Route == SelectedRoute)!.Id + "\n";
                 para.Range.Bold = 1;
 
                 para.Range.Text += "Откуда: ";
@@ -140,6 +142,10 @@ namespace TrainTickets.ViewModel
                 doc.SaveAs2(saveFileDialog.FileName);
 
                 word.Quit();
+
+                SelectedRoute = null!;
+
+                System.Windows.MessageBox.Show("Билетик успешно распечатан");
             }
         }
 

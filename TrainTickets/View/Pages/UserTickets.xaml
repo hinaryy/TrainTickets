@@ -70,20 +70,5 @@
             >
         </TextBlock>
 
-        <TextBlock 
-            Grid.Column="2"
-            HorizontalAlignment="Center"
-            Margin="0 43 0 0">
-            
-            <Hyperlink
-                Foreground="Gray"
-                TextDecorations="None"
-                Command="{Binding BalanceReplenishmentCommand}"
-            >
-                
-                пополнить
-            </Hyperlink>
-        </TextBlock>
-
     </Grid>
 </Page>

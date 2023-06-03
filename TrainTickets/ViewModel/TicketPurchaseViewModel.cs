@@ -154,12 +154,14 @@ namespace TrainTickets.ViewModel
 
             _context.Tickets.Add(ticket);
             _context.SaveChanges();
+
+            MessageBox.Show("Билет успешно куплен, со счета списано " + SelectedRoute.Price + " рублив");
         }
 
         private bool CanExecuteResetFiltersCommand(object obj)
         {
             return !string.IsNullOrEmpty(ToStation)
-                && !string.IsNullOrEmpty(FromStation);
+                || !string.IsNullOrEmpty(FromStation);
         }
 
         private void ExecuteResetFiltersCommand(object obj)
