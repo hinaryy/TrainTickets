@@ -56,13 +56,6 @@
                 Height="30"
                 Command="{Binding DeleteRouteCommand}"/>
                 
-                <Button 
-                Content="Изменить маршрут"
-                Background="White"
-                Margin="0 26 0 0 "
-                Height="30"
-                Command="{Binding EditRouteCommand}"/>
-
             </StackPanel>
             <StackPanel 
                 Width="150"

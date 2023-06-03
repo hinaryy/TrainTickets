@@ -32,6 +32,12 @@ namespace TrainTickets.ViewModel
             set
             {
                 _selectedRoute = value;
+
+                FromStation = _selectedRoute.FromStation;
+                ToStation = _selectedRoute.ToStation;
+                Date = _selectedRoute.Date;
+                Price = _selectedRoute.Price;
+
                 OnPropertyChanged();
             }
         }
@@ -47,7 +53,6 @@ namespace TrainTickets.ViewModel
         }
         public ICommand NavigationToAdminHomePageCommand { get; }
         public ICommand DeleteRouteCommand { get; }
-        public ICommand EditRouteCommand { get; }
         public ICommand SaveEditedRouteCommand { get; }
 
         public List<Route> Routes
@@ -112,7 +117,6 @@ namespace TrainTickets.ViewModel
             _navigationService = navigationService;
             NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>());
             DeleteRouteCommand = new ViewModelCommand(ExecuteDeleteRouteCommand, CanExecuteDeleteRouteCommand);
-            EditRouteCommand = new ViewModelCommand(ExecuteEditRouteCommand, CanExecuteEditRouteCommand);
             SaveEditedRouteCommand = new ViewModelCommand(ExecuteSaveEditedRouteCommand, CanExecuteSaveEditedRouteCommand);
 
             Routes = _context.Routes.ToList();
@@ -141,20 +145,6 @@ namespace TrainTickets.ViewModel
                 Routes = _context.Routes.ToList();
             }
         }
-
-        private bool CanExecuteEditRouteCommand(object obj)
-        {
-            return SelectedRoute != null;
-        }
-
-        private void ExecuteEditRouteCommand(object obj)
-        {
-            FromStation = SelectedRoute.FromStation;
-            ToStation = SelectedRoute.ToStation;
-            Date = SelectedRoute.Date;
-            Price = SelectedRoute.Price;
-        }
-
         private bool CanExecuteDeleteRouteCommand(object obj)
         {
             return SelectedRoute != null;

@@ -18,20 +18,19 @@ namespace TrainTickets.ViewModel
     {
         private ApplicationDbContext _context;
         private INavigationService _navigationService;
-        private Route _selectedRoute;
+        private string _selectedStation;
 
-        private List<Station> _stations;
+        private List<string> _stations;
         private List<Ticket> _tickets;
-        public Route SelectedRoute
+        public string SelectedStation
         {
-            get => _selectedRoute;
+            get => _selectedStation;
             set
             {
-                _selectedRoute = value;
+                _selectedStation = value;
                 OnPropertyChanged();
             }
         }
-
         public INavigationService NavigationService
         {
             get => _navigationService;
@@ -42,7 +41,16 @@ namespace TrainTickets.ViewModel
             }
         }
         public ICommand NavigationToAdminHomePageCommand { get; }
-        public List<Station> Stations { get => _stations; set => _stations = value; }
+        public ICommand DeleteStationCommand { get; }
+        public List<string> Stations 
+        { 
+            get => _stations;
+            set 
+            {
+                _stations = value;
+                OnPropertyChanged(nameof(Stations));
+            } 
+        }
         public List<Ticket> Tickets { get => _tickets; set => _tickets = value; }
 
         public StationDeletingViewModel(ApplicationDbContext context, INavigationService navigationService)
@@ -50,11 +58,26 @@ namespace TrainTickets.ViewModel
             _context = context;
             _navigationService = navigationService;
             NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>());
+            DeleteStationCommand = new ViewModelCommand(ExecuteDeleteStationCommand, CanExecuteDeleteStationCommand);
 
-            Stations = _context.Stations.ToList();
-
+            Stations = _context.Stations.Select(i => i.Name).ToList();
+            Stations.Sort();
         }
 
+        private bool CanExecuteDeleteStationCommand(object obj)
+        {
+            return SelectedStation != null;
+        }
 
+        private void ExecuteDeleteStationCommand(object obj)
+        {
+            Station selStation = _context.Stations.FirstOrDefault(i => i.Name == SelectedStation)!;
+
+            _context.Stations.Remove(selStation);
+            _context.SaveChanges();
+
+            Stations = _context.Stations.Select(i => i.Name).ToList();
+            Stations.Sort();
+        }
     }
 }

@@ -29,5 +29,25 @@
                 Назад
             </Hyperlink>
         </TextBlock>
+
+        <StackPanel
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="300">
+
+            <ComboBox 
+                ItemsSource="{Binding Stations, UpdateSourceTrigger=PropertyChanged}"
+                Text="{Binding SelectedStation, UpdateSourceTrigger=PropertyChanged}"
+                Height="30"/>
+
+            <Button 
+                Content="Удалить"
+                Background="White"
+                Margin="0 26 0 0"
+                Height="30"
+                Command="{Binding DeleteStationCommand}"/>
+
+        </StackPanel>
     </Grid>
 </Page>

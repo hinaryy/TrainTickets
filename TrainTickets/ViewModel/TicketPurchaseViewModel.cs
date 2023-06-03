@@ -51,6 +51,12 @@ namespace TrainTickets.ViewModel
             set
             {
                 _fromStation = value;
+
+                if(FromStation != null && ToStation == null)
+                    Routes = _context.Routes.Where(i => i.FromStation == FromStation).ToList();
+                else if(FromStation != null && ToStation != null)
+                    Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
+
                 OnPropertyChanged(nameof(FromStation));
             }
         }
@@ -60,6 +66,13 @@ namespace TrainTickets.ViewModel
             set
             {
                 _toStation = value;
+
+                if (ToStation != null && FromStation == null)
+                    Routes = _context.Routes.Where(i => i.ToStation == ToStation).ToList();
+                else if (ToStation != null && FromStation != null)
+                    Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
+
+
                 OnPropertyChanged(nameof(ToStation));
             }
         }
@@ -74,7 +87,7 @@ namespace TrainTickets.ViewModel
             }
         }
         public ICommand NavigationToHomePageCommand { get; }
-        public ICommand SearchTicketsCommand { get; }
+        public ICommand ResetFiltersCommand { get; }
         public ICommand BuyTicketCommand { get; }
         public List<Route> Routes 
         { 
@@ -101,7 +114,7 @@ namespace TrainTickets.ViewModel
             _context = context;
             _navigationService = navigationService;
             NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>());
-            SearchTicketsCommand = new ViewModelCommand(ExecuteSearchTicketsCommand, CanExecuteSearchTicketsCommand);
+            ResetFiltersCommand = new ViewModelCommand(ExecuteResetFiltersCommand, CanExecuteResetFiltersCommand);
             BuyTicketCommand = new ViewModelCommand(ExecuteBuyTicketCommand, CanExecuteBuyTicketCommand);
 
             Stations = _context.Stations.Select(i => i.Name).ToList();
@@ -143,16 +156,18 @@ namespace TrainTickets.ViewModel
             _context.SaveChanges();
         }
 
-        private bool CanExecuteSearchTicketsCommand(object obj)
+        private bool CanExecuteResetFiltersCommand(object obj)
         {
             return !string.IsNullOrEmpty(ToStation)
                 && !string.IsNullOrEmpty(FromStation);
         }
 
-        private void ExecuteSearchTicketsCommand(object obj)
+        private void ExecuteResetFiltersCommand(object obj)
         {
-            Routes = _context.Routes.Where(i => i.FromStation == FromStation && i.ToStation == ToStation).ToList();
+            Routes = _context.Routes.ToList();
             SelectedRoute = null;
+            FromStation = null;
+            ToStation = null;
 
             //if(!Routes.IsNullOrEmpty())
             //    SelectedRoute = Routes[0];

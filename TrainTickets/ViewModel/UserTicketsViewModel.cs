@@ -21,6 +21,7 @@ namespace TrainTickets.ViewModel
         private string _fromStation;
         private string _toStation;
         private Route _selectedRoute;
+        private int _balance;
 
         private List<Route> _routes;
         private List<Ticket> _tickets;
@@ -51,6 +52,15 @@ namespace TrainTickets.ViewModel
                 OnPropertyChanged();
             }
         }
+        public int Balance 
+        { 
+            get => _balance;
+            set 
+            {
+                _balance = value;
+                OnPropertyChanged(nameof(Balance));
+            } 
+        }
 
         public INavigationService NavigationService
         {
@@ -80,6 +90,8 @@ namespace TrainTickets.ViewModel
             Tickets = _context.Tickets.Where(i => i.User.Id == user.Id).ToList();
 
             Routes = Tickets.Select(i => i.Route).ToList();
+
+            Balance = user.WalletBalance;
         }
 
         private bool CanExecutePrintTicketCommandCommand(object obj)
