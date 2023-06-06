@@ -81,8 +81,8 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>());
-            PrintTicketCommand = new ViewModelCommand(ExecutePrintTicketCommandCommand, CanExecutePrintTicketCommandCommand);
+            NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>(true));
+            PrintTicketCommand = new ViewModelCommand(ExecutePrintTicketCommand, CanExecutePrintTicketCommand);
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
 
@@ -97,12 +97,12 @@ namespace TrainTickets.ViewModel
 
         }
 
-        private bool CanExecutePrintTicketCommandCommand(object obj)
+        private bool CanExecutePrintTicketCommand(object obj)
         {
             return SelectedRoute != null;
         }
 
-        private void ExecutePrintTicketCommandCommand(object obj)
+        private void ExecutePrintTicketCommand(object obj)
         {
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Документ Word (*.docx)|*.docx";

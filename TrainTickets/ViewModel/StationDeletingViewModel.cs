@@ -57,7 +57,7 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>());
+            NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>(true));
             DeleteStationCommand = new ViewModelCommand(ExecuteDeleteStationCommand, CanExecuteDeleteStationCommand);
 
             Stations = _context.Stations.Select(i => i.Name).ToList();

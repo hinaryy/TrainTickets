@@ -115,7 +115,7 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>());
+            NavigationToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>(true));
             DeleteRouteCommand = new ViewModelCommand(ExecuteDeleteRouteCommand, CanExecuteDeleteRouteCommand);
             SaveEditedRouteCommand = new ViewModelCommand(ExecuteSaveEditedRouteCommand, CanExecuteSaveEditedRouteCommand);
 

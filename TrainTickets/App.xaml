@@ -48,6 +48,10 @@
                 <view:StationDeletingPage/>
             </DataTemplate>
             
+            <DataTemplate DataType="{x:Type TypeName=viewModel:BalanceRepleinshmentViewModel}">
+                <view:BalanceRepleinshmentPage/>
+            </DataTemplate>
+            
             <DataTemplate DataType="{x:Type TypeName=viewModel:TicketPurchaseViewModel}">
                 <view:TicketPurchasePage/>
             </DataTemplate>
@@ -63,11 +67,6 @@
             <DataTemplate DataType="{x:Type TypeName=viewModel:MainViewModel}">
                 <window:MainWindow/>
             </DataTemplate>
-
-            <DataTemplate DataType="{x:Type TypeName=viewModel:BalanceRepleinshmentViewModel}">
-                <window:BalanceRepleinshmentWindow/>
-            </DataTemplate>
-
 
         </ResourceDictionary>
     

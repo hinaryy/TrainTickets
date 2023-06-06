@@ -30,21 +30,14 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToTicketPurchasePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<TicketPurchaseViewModel>());
-            NavigationToUserTickersPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<UserTicketsViewModel>());
-            NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
-            OpenBalanceReplenishmentWindowCommand = new ViewModelCommand(ExecuteOpenBalanceReplenishmentWindowCommand, CanExecuteOpenBalanceReplenishmentWindowCommand);
+            NavigationToTicketPurchasePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<TicketPurchaseViewModel>(true));
+            NavigationToUserTickersPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<UserTicketsViewModel>(true));
+            NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>(true));
+            OpenBalanceReplenishmentWindowCommand = new ViewModelCommand(i => NavigationService.NavigateTo<BalanceRepleinshmentViewModel>(false));
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("user.json"))!;
             user = _context.Users.FirstOrDefault(i => i.Id == user.Id)!;
             Balance = user.WalletBalance;
-        }
-
-        private bool CanExecuteOpenBalanceReplenishmentWindowCommand(object obj) => true;
-
-        private void ExecuteOpenBalanceReplenishmentWindowCommand(object obj)
-        {
-
         }
 
         public INavigationService NavigationService

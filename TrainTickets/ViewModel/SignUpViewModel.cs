@@ -77,7 +77,7 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToSignInCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
+            NavigationToSignInCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>(true));
             SignUpCommand = new ViewModelCommand(ExecuteSignUpCommand, CanExecuteSignUpCommand);
         }
 

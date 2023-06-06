@@ -7,13 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\BalanceRepleinshmentWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\AdminHomePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\BalanceRepleinshmentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\HomePage.xaml.cs">
@@ -66,13 +66,13 @@
     <Page Update="Styles\UserTicketCard.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\BalanceRepleinshmentWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="View\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\AdminHomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\BalanceRepleinshmentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\HomePage.xaml">

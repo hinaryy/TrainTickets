@@ -53,7 +53,7 @@
             <Hyperlink
                 Foreground="Gray"
                 TextDecorations="None"
-                Command="{Binding BalanceReplenishmentCommand}">
+                Command="{Binding OpenBalanceReplenishmentWindowCommand}">
                 
                 пополнить
             </Hyperlink>

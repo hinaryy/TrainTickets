@@ -10,8 +10,9 @@ namespace TrainTickets.Interfaces
     public interface INavigationService
     {
         ViewModelBase CurrentView { get; }
+        ViewModelBase ExternalView { get; }
 
-        void NavigateTo<T>() where T : ViewModelBase;
+        void NavigateTo<T>(bool ? isCurrent = null) where T : ViewModelBase;
 
     }
 }

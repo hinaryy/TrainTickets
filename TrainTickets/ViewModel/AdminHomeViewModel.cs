@@ -27,11 +27,11 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToRouteAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteAddingViewModel>());
-            NavigationToRouteDeletingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteDeletingViewModel>());
-            NavigationToStationAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationAddingViewModel>());
-            NavigationToStationDeletingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationDeletingViewModel>());
-            NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>());
+            NavigationToRouteAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteAddingViewModel>(true));
+            NavigationToRouteDeletingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<RouteDeletingViewModel>(true));
+            NavigationToStationAddingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationAddingViewModel>(true));
+            NavigationToStationDeletingPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<StationDeletingViewModel>(true));
+            NavigationToSignInPageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<SignInViewModel>(true));
 
             var user = JsonConvert.DeserializeObject<User>(File.ReadAllText("admin.json"))!;
 

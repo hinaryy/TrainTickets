@@ -113,7 +113,7 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>());
+            NavigationToHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<HomeViewModel>(true));
             ResetFiltersCommand = new ViewModelCommand(ExecuteResetFiltersCommand, CanExecuteResetFiltersCommand);
             BuyTicketCommand = new ViewModelCommand(ExecuteBuyTicketCommand, CanExecuteBuyTicketCommand);
 

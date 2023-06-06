@@ -46,6 +46,8 @@ namespace TrainTickets
             services.AddTransient<UserTicketsViewModel>();
             services.AddTransient<TicketPurchaseViewModel>();
 
+            services.AddTransient<BalanceRepleinshmentViewModel>();
+
             services.AddSingleton<MainViewModel>();
             services.AddSingleton<INavigationService, NavigationService>();
 

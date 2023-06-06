@@ -44,7 +44,7 @@ namespace TrainTickets.ViewModel
         {
             _context = context;
             _navigationService = navigationService;
-            NavigateToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>());
+            NavigateToAdminHomePageCommand = new ViewModelCommand(i => NavigationService.NavigateTo<AdminHomeViewModel>(true));
             AddStationCommand = new ViewModelCommand(ExecuteAddStationCommand, CanExecuteAddStationCommand);
         }
 
