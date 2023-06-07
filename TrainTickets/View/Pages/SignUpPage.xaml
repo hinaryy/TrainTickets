@@ -22,7 +22,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="1" Grid.Row="1" BorderThickness="2" BorderBrush="Black" CornerRadius="3">
+        <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="3">
             <StackPanel>
                 <TextBlock 
                 FontWeight="Bold" 
@@ -31,43 +31,44 @@
                 Margin="0,30,0,30"
                 FontFamily="{StaticResource Poppins Bold}" Text="Регистрация"/>
 
+                <Label 
+                    Content="Логин"
+                    Margin="30 0 30 0"/>
                 <TextBox 
                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Center" 
                     Height="50" 
                     Width="300" 
-                    BorderBrush="Black" 
-                    BorderThickness="2"
-                    x:Name="RegistrationNameTextBox">
+                    BorderBrush="Black"
+                    VerticalContentAlignment="Center"
+                    Padding="10 0 0 0"/>
 
-                </TextBox>
 
+
+                <Label 
+                    Content="E-mail"
+                    Margin="30 0 30 0"/>
                 <TextBox 
-                    
-                    HorizontalAlignment="Center" 
                     Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
-                    Height="50" 
-                    Width="300" 
-                    BorderBrush="Black" 
-                    BorderThickness="2"
-                    Margin="0, 30, 0, 0"
-                    x:Name="RegistrationEmailTextBox">
-
-                </TextBox>
-
-                <TextBox 
-                    
                     HorizontalAlignment="Center" 
-                    Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Height="50" 
                     Width="300" 
-                    BorderBrush="Black" 
-                    BorderThickness="2"
-                    Margin="0, 30, 0, 30"
-                    x:Name="RegistrationPasswordTextBox">
+                    BorderBrush="Black"
+                    VerticalContentAlignment="Center"
+                    Padding="10 0 0 0"/>
 
-                </TextBox>
-
+                <Label 
+                    Content="Пароль"
+                    Margin="30 0 30 0"/>
+                <TextBox 
+                    Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    HorizontalAlignment="Center" 
+                    Height="50" 
+                    Width="300" 
+                    BorderBrush="Black"
+                    Margin="0 0 0 30"                    
+                    VerticalContentAlignment="Center"
+                    Padding="10 0 0 0"/>
 
                 <Button 
                     HorizontalAlignment="Center"
@@ -76,7 +77,7 @@
                     Content="Зарегистрироваться"
                     Background="#fff"
                     BorderBrush="Black"
-                    BorderThickness="2"
+                    BorderThickness="1"
                     FontWeight="DemiBold"
                     FontSize="13"
                     Command="{Binding SignUpCommand}"

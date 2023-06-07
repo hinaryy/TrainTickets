@@ -4,6 +4,9 @@ using TrainTickets.Interfaces;
 using TrainTickets.Persistence;
 using System.IO;
 using Newtonsoft.Json;
+using System.Windows.Controls;
+using TrainTickets.Model;
+using System.Windows.Documents;
 
 namespace TrainTickets.ViewModel
 {
@@ -73,17 +76,17 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteSignInCommand(object obj)
         {
-
-            var user = _context.Users.FirstOrDefault(i => i.Name == Name && i.Password == Password);
+            var admin = JsonConvert.DeserializeObject<User>(File.ReadAllText("admin.json"))!;
+            var user = _context.Users.FirstOrDefault(i => i.Name == Name && i.Password == Password)!;
 
             if (user == null)
             {
                 ErrorMessage = "Пароль или логин некорректный";
 
             }
-            else if (user.Name.EndsWith("admin"))
+            else if (user.Name == admin.Name && user.Password == admin.Password && user.Email == admin.Email && user.Id == admin.Id)
             {
-                NavigationService.NavigateTo<AdminHomeViewModel>();
+                NavigationService.NavigateTo<AdminHomeViewModel>(true);
             }
             else if (user != null)
             {
@@ -97,7 +100,7 @@ namespace TrainTickets.ViewModel
                     serializer.Serialize(file, user);
                 }
 
-                NavigationService.NavigateTo<HomeViewModel>();
+                NavigationService.NavigateTo<HomeViewModel>(true);
             }
         }
     }

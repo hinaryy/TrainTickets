@@ -105,7 +105,7 @@ namespace TrainTickets.ViewModel
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            NavigationService.NavigateTo<SignInViewModel>();
+            NavigationService.NavigateTo<SignInViewModel>(true);
 
 
         }
