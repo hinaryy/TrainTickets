@@ -152,20 +152,17 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteDeleteRouteCommand(object obj)
         {
-            var Tickets = _context.Tickets.Where(i => i.Route == SelectedRoute).ToList();
+            var tickets = _context.Tickets.Where(i => i.Route == SelectedRoute).ToList();
 
-            for (int i = 0; i < Tickets.Count; i++)
-            {
-                _context.Tickets.Remove(Tickets[i]);
-            }
+            foreach (var ticket in tickets)
+                _context.Tickets.Remove(ticket);
+            _context.SaveChanges();
 
             if (SelectedRoute != null)
                 _context.Routes.Remove(SelectedRoute);
-
             _context.SaveChanges();
 
             Routes = _context.Routes.ToList();
-
         }
 
     }

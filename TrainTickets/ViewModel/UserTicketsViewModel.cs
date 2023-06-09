@@ -12,6 +12,7 @@ using System.Windows.Input;
 using TrainTickets.Interfaces;
 using TrainTickets.Model;
 using TrainTickets.Persistence;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TrainTickets.ViewModel
 {
@@ -26,6 +27,7 @@ namespace TrainTickets.ViewModel
         
         private List<Route> _routes;
         private List<Ticket> _tickets;
+
         public string FromStation
         {
             get => _fromStation;
@@ -112,42 +114,56 @@ namespace TrainTickets.ViewModel
             if (saveFileDialog.FileName != "" && saveFileDialog.ShowDialog() == true)
             {
                 Application word = new Application();
+
                 Document doc = word.Documents.Add();
 
-                doc.PageSetup.PaperSize = WdPaperSize.wdPaperA4;
+                Border border = doc.Content.Borders[WdBorderType.wdBorderTop];
+                border.LineStyle = WdLineStyle.wdLineStyleSingle;
+                border.Color = WdColor.wdColorBlack;
+                border.LineWidth = WdLineWidth.wdLineWidth225pt;
 
-                Paragraph para = doc.Paragraphs.Add();
+                Microsoft.Office.Interop.Word.Range range = doc.Content;
+                range.Text = "***";
+                range.Font.Size = 24;
+                range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                range.InsertParagraphAfter();
 
-                para.Range.Text = "Билетик №" + Tickets.FirstOrDefault(i => i.Route == SelectedRoute)!.Id + "\n";
-                para.Range.Bold = 1;
+                Paragraph title = doc.Content.Paragraphs.Add();
+                title.Range.Text = "Билет на электричку";
+                title.Range.Font.Size = 18;
+                title.Range.Font.Bold = 1;
+                title.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                title.Range.InsertParagraphAfter();
 
-                para.Range.Text += "Откуда: ";
-                para.Range.Bold = 1;
+                Paragraph fromStation = doc.Content.Paragraphs.Add();
+                fromStation.Range.Text = "Станция отправления: \t.\t.\t.\t.\t.\t.\t.\t" + SelectedRoute.FromStation;
+                fromStation.Range.Font.Size = 14;
+                fromStation.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
+                fromStation.Range.InsertParagraphAfter();
 
-                para.Range.Text += SelectedRoute.FromStation;
-                para.Range.Bold = 0;
+                Paragraph toStation = doc.Content.Paragraphs.Add();
+                toStation.Range.Text = "Станция прибытия: \t.\t.\t.\t.\t.\t.\t.\t" + SelectedRoute.ToStation;
+                toStation.Range.Font.Size = 14;
+                toStation.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
+                toStation.Range.InsertParagraphAfter();
 
-                para.Range.Text += "\nКуда: ";
-                para.Range.Bold = 1;
+                Paragraph date = doc.Content.Paragraphs.Add();
+                date.Range.Text = "Дата и время отправления: \t.\t.\t.\t.\t.\t.\t" + SelectedRoute.Date.ToShortDateString();
+                date.Range.Font.Size = 14;
+                date.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
+                date.Range.InsertParagraphAfter();
 
-                para.Range.Text += SelectedRoute.ToStation;
-                para.Range.Bold = 0;
-
-                para.Range.Text += "\nДата: ";
-                para.Range.Bold = 1;
-
-                para.Range.Text += SelectedRoute.Date.ToShortDateString();
-                para.Range.Bold = 0;
+                Paragraph price = doc.Content.Paragraphs.Add();
+                price.Range.Text = "Цена билета: \t.\t.\t.\t.\t.\t.\t.\t.\t" + SelectedRoute.Price;
+                price.Range.Font.Size = 14;
+                price.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
+                price.Range.InsertParagraphAfter();
 
                 doc.SaveAs2(saveFileDialog.FileName);
 
+                doc.Close();
                 word.Quit();
-
-                SelectedRoute = null!;
-
-                System.Windows.MessageBox.Show("Билетик успешно распечатан");
             }
         }
-
     }
 }

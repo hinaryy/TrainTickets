@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Word;
+﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using Microsoft.Office.Interop.Word;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
@@ -71,7 +72,17 @@ namespace TrainTickets.ViewModel
 
         private void ExecuteDeleteStationCommand(object obj)
         {
-            Station selStation = _context.Stations.FirstOrDefault(i => i.Name == SelectedStation)!;
+            var selStation = _context.Stations.FirstOrDefault(i => i.Name == SelectedStation)!;
+            var routes = _context.Routes.Where(i => i.FromStation == SelectedStation || i.ToStation == SelectedStation).ToList();
+            var tickets = _context.Tickets.Where(i => i.Route.ToStation == SelectedStation || i.Route.FromStation == SelectedStation).ToList();
+
+            foreach (var ticket in tickets)
+                _context.Tickets.Remove(ticket);
+            _context.SaveChanges();
+
+            foreach (var route in routes)
+                _context.Routes.Remove(route);
+            _context.SaveChanges();
 
             _context.Stations.Remove(selStation);
             _context.SaveChanges();
