@@ -66,7 +66,7 @@
             Command="{Binding NavigationToRouteAddingPageCommand}"/>
             
             <Button 
-            Content="Изменить маршруты" 
+            Content="Редактировать маршрут" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
             Width="300"
